@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+
+  <div class="login" *ngIf="!loading">
+
+    <img class="logo" src="./../../../assets/img/login.png" alt="img signin">
+    <h2 class="mb-4">Login</h2>
+
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" placeholder="Ingrese Email" [(ngModel)]="email">
+      <label>Email</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control" placeholder="Ingrese contraseña" [(ngModel)]="password">
+      <label>Contraseña</label>
+    </div>
+
+    <div class="d-grid gap-2">
+      <button type="button" class="btn btn-dark btn-lg" (click)="login()">Aceptar</button>
+    </div>
+
+    <p class="mt-3">¿No tienes cuenta?
+      <a class="text-dark" routerLink="/signup">Registrar</a>
+    </p>
+
+  </div>
+
+  <app-spinner *ngIf="loading"></app-spinner>
+
+</div>
