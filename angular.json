@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/zibrid-web",
+            "outputPath": "dist/www.zibrid.com",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "zibrid-web:build:production"
+              "browserTarget": "www.zibrid.com:build:production"
             },
             "development": {
-              "browserTarget": "zibrid-web:build:development"
+              "browserTarget": "www.zibrid.com:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "zibrid-web:build"
+            "browserTarget": "www.zibrid.com:build"
           }
         },
         "test": {
