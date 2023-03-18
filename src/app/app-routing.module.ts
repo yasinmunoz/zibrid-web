@@ -7,13 +7,14 @@ import { SignupComponent } from './components/signup/signup.component';
 
 import { AuthGuard } from './guards/signin.guard';
 import { ProfileGuard } from './guards/profile.guard';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'signin', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
   { path: 'signin', component: SigninComponent, canActivate: [ ProfileGuard ] },
   { path: 'signup', component: SignupComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
-  { path: '**', redirectTo: 'signin', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

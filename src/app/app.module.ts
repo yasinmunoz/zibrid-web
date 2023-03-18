@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from "@auth0/angular-jwt";
+import { IonicModule } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -15,6 +16,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
     SignupComponent,
     ProfileComponent,
     NavbarComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
         }
       },
     }),
+    IonicModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

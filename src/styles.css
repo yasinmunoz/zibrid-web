@@ -22,3 +22,7 @@ body {
   width: 100%;
   text-align: center;
 }
+
+ion-icon {
+  font-size: 1.5em;
+}
