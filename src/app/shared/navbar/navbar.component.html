@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 
-  <a class="navbar-brand ms-5" href="index.html">
+  <a class="navbar-brand ms-5" href="">
     Zibrid
   </a>
 
@@ -17,13 +17,13 @@
           <ion-icon name="person-outline" style="padding-top: 7px;"></ion-icon>
         </a>
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="userDropdown">
-          <li><a class="dropdown-item" href="signup.html">Sign up</a></li>
-          <li><a class="dropdown-item" href="signin.html">Sign in</a></li>
-          <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-          <li>
+          <li *ngIf="!token"><a class="dropdown-item" href="signin">Iniciar sesión</a></li>
+          <li *ngIf="!token"><a class="dropdown-item" href="signup">Registrarse</a></li>          
+          <li *ngIf="token"><a class="dropdown-item" href="profile">Perfil</a></li>
+          <li *ngIf="token">
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item" href="index.html">Sign out</a></li>
+          <li *ngIf="token"><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
         </ul>
       </li>
 
