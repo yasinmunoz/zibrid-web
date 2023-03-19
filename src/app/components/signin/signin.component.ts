@@ -44,7 +44,7 @@ export class SigninComponent {
     this._userSvc.signin(user).subscribe({
       next: (token) => {
         localStorage.setItem('token', token);
-        this._router.navigate(['/profile']);
+        this._router.navigate(['/account']);
       },
       error: (e: HttpErrorResponse) => {
         this._errorSvc.msgError(e);

@@ -18,7 +18,7 @@ export class ProfileGuard implements CanActivate {
 
     const token = localStorage.getItem('token');
 
-    if (token) this._router.navigate(['/profile']);
+    if (token) this._router.navigate(['/account']);
 
     return true;
   }

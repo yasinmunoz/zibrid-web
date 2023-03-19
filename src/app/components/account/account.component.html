@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+
+<section class="py-5">
+
+  <div class="container">
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a class="text-decoration-none text-dark" href="home">Home</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Cuenta</li>
+    </ol>
+
+    <h1 class="display-5">Cuenta</h1>
+    <p class="text-muted mb-5">Hola, {{this.user.email}}. Desde aquí puedes gestionar tu cuenta</p>
+
+    <div class="row">
+
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow">
+          <div class="card-body">
+            <div class="icon-rounded bg-secondary-light mb-3">
+              <img src="./../../../assets/img/login.png" alt="Información Personal" width="100px">
+            </div>
+            <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link"
+                href="profile">Perfil</a></h5>
+            <p class="text-muted card-text text-sm">Accede a tu perfil</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow">
+          <div class="card-body">
+            <div class="icon-rounded bg-secondary-light mb-3">
+              <img src="./../../../assets/img/personal-information.png" alt="Información Personal" width="100px">
+            </div>
+            <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link"
+                href="personal-info">Información Personal</a></h5>
+            <p class="text-muted card-text text-sm">Podrás consultar y editar tus datos personales</p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>

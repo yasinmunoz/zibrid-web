@@ -17,6 +17,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { HomeComponent } from './components/home/home.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { AccountComponent } from './components/account/account.component';
+import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import { HomeComponent } from './components/home/home.component';
     ProfileComponent,
     NavbarComponent,
     SpinnerComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent,
+    AccountComponent,
+    PersonalInfoComponent
   ],
   imports: [
     BrowserModule,
