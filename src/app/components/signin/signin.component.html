@@ -1,30 +1,77 @@
-<app-navbar></app-navbar>
-<div class="wrapper">
+<div class="container-fluid">
 
-  <div class="login" *ngIf="!loading">
+  <div class="row min-vh-100">
 
-    <img class="logo" src="./../../../assets/img/login.png" alt="img signin">
-    <h2 class="mb-4">Login</h2>
-
-    <div class="form-floating mb-3">
-      <input type="email" class="form-control" placeholder="Ingrese Email" [(ngModel)]="email">
-      <label>Email</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="password" class="form-control" placeholder="Ingrese contraseña" [(ngModel)]="password">
-      <label>Contraseña</label>
+    <div class="col-md-5 col-lg-6 col-xl-7 d-none d-md-block">
+      <div class="bg-cover h-100 me-n3" style="background-image: url(./../../../assets/img/digital-nomad.png);">
+      </div>
     </div>
 
-    <div class="d-grid gap-2">
-      <button type="button" class="btn btn-dark btn-lg" (click)="login()">Aceptar</button>
-    </div>
+    <div class="col-md-7 col-lg-6 col-xl-5">
 
-    <p class="mt-3">¿No tienes cuenta?
-      <a class="text-dark" routerLink="/signup">Registrar</a>
-    </p>
+      <div class="w-100 py-5 px-md-5 px-xxl-6 mt-5">
+
+        <div class="d-flex justify-content-between mb-3">
+          <div>
+            <h2>Bienvenido de nuevo</h2>
+            <h6>Reserva tu espacio en Zibrid</h6>
+          </div>
+          <div class="ms-auto text-end">
+            <a href="home" class="text-decoration-none text-dark">
+              <ion-icon size="large" name="close-outline"></ion-icon>
+            </a>
+          </div>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" placeholder="Ingrese Email" [(ngModel)]="email">
+          <label>Email</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" placeholder="Ingrese contraseña" [(ngModel)]="password">
+          <label>Contraseña</label>
+        </div>
+
+        <div class="d-flex justify-content-between mb-3">
+          <div>
+            <small class="text-muted">¿Aún no tienes cuenta?
+              <a href="signup" class="text-dark">Regístrate</a>
+            </small>
+          </div>
+          <div class="ms-auto text-end">
+            <small class="text-muted">
+              <a href="" class="text-dark">¿Has olvidado tu contraseña?</a>
+            </small>
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button class="btn btn-lg btn-dark">Iniciar sesión</button>
+        </div>
+
+        <div class="my-3">
+          <div class="separator" style="font-size: large;">o</div>
+        </div>
+
+
+        <div class="d-grid gap-2">
+          <button class="btn btn-lg btn-info">
+            <div class="d-flex justify-content-center">
+              <ion-icon name="logo-linkedin"></ion-icon> <span class="ms-3">Continuar con Linkedln</span>
+            </div>
+          </button>
+
+          <button class="btn btn-lg btn-danger">
+            <div class="d-flex justify-content-center">
+              <ion-icon name="logo-google"></ion-icon> <span class="ms-4">Continuar con Google</span>
+            </div>
+          </button>
+        </div>
+
+      </div>
+    </div>
 
   </div>
-
-  <app-spinner *ngIf="loading"></app-spinner>
 
 </div>

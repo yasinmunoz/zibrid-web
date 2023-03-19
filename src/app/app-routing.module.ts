@@ -13,7 +13,7 @@ import { PersonalInfoComponent } from './components/personal-info/personal-info.
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'signin', component: SigninComponent, canActivate: [ ProfileGuard ] },
+  { path: 'signin', component: SigninComponent, canActivate: [ ProfileGuard ], data: { showFooter: true } },
   { path: 'signup', component: SignupComponent },  
   { path: 'account', component: AccountComponent, canActivate: [ AuthGuard ] },
   { path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
