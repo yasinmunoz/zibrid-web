@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../interfaces/user';
@@ -11,7 +11,9 @@ import { ErrorService } from 'src/app/services/error.service';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
-export class SigninComponent {
+export class SigninComponent implements AfterViewInit {
+
+  isLoading = true;
 
   email: string = '';
   password: string = '';
@@ -23,6 +25,10 @@ export class SigninComponent {
     private _errorSvc: ErrorService,
     private _router: Router
   ) { }
+
+  ngAfterViewInit() {
+    this.isLoading = false;
+  }
 
   login() {
 

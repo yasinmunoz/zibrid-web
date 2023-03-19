@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
@@ -14,8 +14,10 @@ import { User } from '../../interfaces/user';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements AfterViewInit {
 
+  isLoading = true;
+  
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
@@ -28,8 +30,8 @@ export class SignupComponent implements OnInit {
     private _errorSvc: ErrorService
   ) { }
 
-  ngOnInit(): void {
-
+  ngAfterViewInit() {
+    this.isLoading = false;
   }
 
   addUser() {
