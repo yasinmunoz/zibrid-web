@@ -6,17 +6,18 @@ import { Router } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent{
+export class NavbarComponent {
 
-  token: string | null = localStorage.getItem('token');  
+  token: string | null = localStorage.getItem('token');
 
-  constructor(private _router: Router){
+  constructor(private _router: Router) {
 
   }
-  
-  logout(){
-    localStorage.removeItem('token');    
-    this._router.navigate(['']);
+
+  logout() {
+
+    if (window.location.pathname === '/') window.location.reload();
+    else localStorage.removeItem('token');
   }
 
 }
