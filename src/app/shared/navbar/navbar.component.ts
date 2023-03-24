@@ -16,8 +16,14 @@ export class NavbarComponent {
 
   logout() {
 
-    if (window.location.pathname === '/') window.location.reload();
-    else localStorage.removeItem('token');
+    if (window.location.pathname === '/') {
+      localStorage.removeItem('token');
+      window.location.reload();
+    } else {
+      localStorage.removeItem('token');
+      this._router.navigate(['']);
+    }
+
   }
 
 }
