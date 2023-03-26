@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 
-  <a class="navbar-brand ms-5" routerLink="">
+  <a class="navbar-brand ms-5" routerLink="/">
     Zibrid
   </a>
 
@@ -12,14 +12,14 @@
   <div class="collapse navbar-collapse justify-content-end me-5 ms-5" id="navbarContent">
     <ul class="navbar-nav mb-2 mb-md-0">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" routerLink="#" role="button" id="userDropdown" data-bs-toggle="dropdown"
+        <a class="nav-link dropdown-toggle" routerLink="/#" role="button" id="userDropdown" data-bs-toggle="dropdown"
           aria-expanded="false">          
           <ion-icon name="person-outline" style="padding-top: 7px;"></ion-icon>
         </a>
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="userDropdown">
-          <li *ngIf="!token"><a class="dropdown-item" routerLink="signin">Iniciar sesión</a></li>
-          <li *ngIf="!token"><a class="dropdown-item" routerLink="signup">Registrarse</a></li>          
-          <li *ngIf="token"><a class="dropdown-item" routerLink="account">Cuenta</a></li>
+          <li *ngIf="!token"><a class="dropdown-item" routerLink="/signin">Iniciar sesión</a></li>
+          <li *ngIf="!token"><a class="dropdown-item" routerLink="/signup">Registrarse</a></li>          
+          <li *ngIf="token"><a class="dropdown-item" routerLink="/account">Cuenta</a></li>
           <li *ngIf="token">
             <hr class="dropdown-divider">
           </li>
@@ -28,7 +28,7 @@
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" routerLink="#" role="button" id="cartDropdown" data-bs-toggle="dropdown"
+        <a class="nav-link dropdown-toggle" routerLink="/#" role="button" id="cartDropdown" data-bs-toggle="dropdown"
           aria-expanded="false">          
           <ion-icon name="globe-outline" style="padding-top: 7px;"></ion-icon>   
         </a>
