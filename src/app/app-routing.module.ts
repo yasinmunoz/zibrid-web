@@ -10,11 +10,14 @@ import { ProfileGuard } from './guards/profile.guard';
 import { HomeComponent } from './components/home/home.component';
 import { AccountComponent } from './components/account/account.component';
 import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
+import { SignupLandlordComponent } from './components/signup-landlord/signup-landlord.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'signin', component: SigninComponent, canActivate: [ ProfileGuard ], data: { showFooter: true } },
-  { path: 'signup', component: SignupComponent },  
+  { path: 'signup', component: SignupComponent },
+  { path: 'signup/landlord', component: SignupLandlordComponent },
   { path: 'account', component: AccountComponent, canActivate: [ AuthGuard ] },
   { path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
   { path: 'personal-info', component: PersonalInfoComponent, canActivate: [ AuthGuard ] },

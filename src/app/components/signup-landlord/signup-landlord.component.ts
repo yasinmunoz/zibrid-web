@@ -1,24 +1,18 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { ToastrService } from 'ngx-toastr';
-import { Tenant } from 'src/app/interfaces/tenant';
-
+import { User } from 'src/app/interfaces/user';
 import { ErrorService } from 'src/app/services/error.service';
 import { UserService } from 'src/app/services/user.service';
-
-import { User } from '../../interfaces/user';
+import { Landlord } from '../../interfaces/landlord';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-signup-landlord',
+  templateUrl: './signup-landlord.component.html',
+  styleUrls: ['./signup-landlord.component.css']
 })
-export class SignupComponent {
-
-
-
+export class SignupLandlordComponent {
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
@@ -43,15 +37,15 @@ export class SignupComponent {
       return;
     }
 
-    const tenantUser: Tenant = {
+    const landLordUser: Landlord = {
       email: this.email,
       password: this.password,
-      role: 3
+      role: 2
     };
 
     this.loading = true;
 
-    this._userSvc.signup(tenantUser).subscribe({
+    this._userSvc.signup(landLordUser).subscribe({
 
       next: (v) => {
         this.loading = false;
@@ -65,5 +59,4 @@ export class SignupComponent {
     });
 
   }
-
 }

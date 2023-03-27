@@ -11,9 +11,7 @@ import { ErrorService } from 'src/app/services/error.service';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
-export class SigninComponent implements AfterViewInit {
-
-  isLoading = true;
+export class SigninComponent {
 
   email: string = '';
   password: string = '';
@@ -25,10 +23,6 @@ export class SigninComponent implements AfterViewInit {
     private _errorSvc: ErrorService,
     private _router: Router
   ) { }
-
-  ngAfterViewInit() {
-    this.isLoading = false;
-  }
 
   login() {
 
@@ -42,7 +36,7 @@ export class SigninComponent implements AfterViewInit {
     // Creamos el body
     const user: User = {
       email: this.email,
-      password: this.password
+      password: this.password,
     }
 
     this.loading = true;

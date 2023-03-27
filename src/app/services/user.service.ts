@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
 import { Observable } from 'rxjs';
+import { Landlord } from '../interfaces/landlord';
 
 
 @Injectable({
@@ -15,8 +16,8 @@ export class UserService {
   constructor(
     private _http: HttpClient
   ) {
-    //this.serverURL = 'http://localhost:3000/';
-    this.serverURL = 'http://3.69.12.0:3000/';
+    this.serverURL = 'http://localhost:3000/';
+    //this.serverURL = 'http://3.69.12.0:3000/';
     this.apiURL = 'api/users'
   }
 
@@ -28,6 +29,16 @@ export class UserService {
   signin(user: User): Observable<string> {
 
     return this._http.post<string>(`${this.serverURL}${this.apiURL}/signin`, user);
+  }
+
+  signupLandLord(landLordUser: Landlord): Observable<any> {
+
+    return this._http.post(`${this.serverURL}${this.apiURL}`, landLordUser);
+  }
+
+  signinLandLord(landLordUser: Landlord): Observable<string> {
+
+    return this._http.post<string>(`${this.serverURL}${this.apiURL}/signin`, landLordUser);
   }
 
 }

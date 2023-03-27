@@ -20,6 +20,8 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AccountComponent } from './components/account/account.component';
 import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
+import { SignupLandlordComponent } from './components/signup-landlord/signup-landlord.component';
+
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { PersonalInfoComponent } from './components/personal-info/personal-info.
     HomeComponent,
     FooterComponent,
     AccountComponent,
-    PersonalInfoComponent
+    PersonalInfoComponent,
+    SignupLandlordComponent    
   ],
   imports: [
     BrowserModule,

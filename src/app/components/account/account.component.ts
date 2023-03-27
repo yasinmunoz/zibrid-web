@@ -18,7 +18,7 @@ export class AccountComponent {
 
     if (token) {
       this.user = this._jwtHelperSvc.decodeToken(token);
-      console.log(this.user);
+      console.log(this.user.roles[0]);
     }
   }
 }
