@@ -16,8 +16,8 @@ export class UserService {
   constructor(
     private _http: HttpClient
   ) {
-    this.serverURL = 'http://localhost:3000/';
-    //this.serverURL = 'http://3.69.12.0:3000/';
+    //this.serverURL = 'http://localhost:3000/';
+    this.serverURL = 'http://3.69.12.0:3000/';
     this.apiURL = 'api/users'
   }
 
