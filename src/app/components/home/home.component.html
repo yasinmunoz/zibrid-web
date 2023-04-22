@@ -1,12 +1,13 @@
 <app-navbar></app-navbar>
 
-<section class="container mt-5 mb-5">
+<section class="container mt-5">
 
   <div class="row">
 
     <div class="col-xl-5 col-lg-6 col-md-6 order-md-1 pt-xl-5 pe-lg-0 mb-3 text-md-start text-center">
       <h1 class="display-4 mt-lg-5 mb-md-4 mb-3 pt-md-4 pb-lg-2">Encuentra tu espacio de trabajo</h1>
-      <p class="position-relative lead me-lg-n5">Ofrecemos un servicio completo de alquiler de espacios de trabajo 100% online.</p>
+      <p class="position-relative lead me-lg-n5">Ofrecemos un servicio completo de alquiler de espacios de trabajo 100%
+        online.</p>
     </div>
 
     <div class="col-xl-7 col-lg-6 col-md-6 order-md-2 mb-4 mb-lg-3">
@@ -17,7 +18,53 @@
 
 </section>
 
-<section class="py-6 bg-light">
+<section class="container mt-5">
+
+  <form class="row align-items-center">
+
+    <div class="col-xl-2 col-lg-6 mb-2">
+      <select class="form-select" aria-label="Default select example">        
+        <option selected value="1">Escritorios</option>
+        <option value="2">Apartamentos</option>
+        <option value="3">Casas</option>
+        <option value="4">Coworking</option>
+        <option value="5">Coliving</option>
+      </select>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 mb-2">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Localización" aria-label="Location"
+          aria-describedby="basic-addon1">
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-5 mb-2">
+      <div class="input-group">
+        <span class="input-group-text">Desde</span>
+        <input type="date" class="form-control" id="fromDate">
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-5 mb-2">
+      <div class="input-group">
+        <span class="input-group-text">Hasta</span>
+        <input type="date" class="form-control" id="toDate">
+      </div>
+    </div>
+
+    <div class="col-xl-1 col-lg-1 mb-2">
+      <a href="#" class="btn btn-dark">
+        Buscar
+        <!--<ion-icon size="small" name="search-outline"></ion-icon>-->
+      </a>
+    </div>
+
+  </form>
+
+</section>
+
+<section class="mt-5 py-6 bg-light">
 
   <div class="container">
 
@@ -109,7 +156,7 @@
           </a>
         </div>
       </div>
-    </div>    
+    </div>
 
     <div class="col">
       <div class="card h-100 border-0 shadow text-center">

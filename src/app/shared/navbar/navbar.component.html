@@ -11,7 +11,8 @@
 
   <div class="collapse navbar-collapse justify-content-end me-5 ms-5" id="navbarContent">
     
-    <a class="btn btn-outline-dark btn-sm me-4" role="button" routerLink="signup/landlord" *ngIf="!token">Pon tu espacio en Zibrid</a>
+    <a class="btn btn-outline-dark btn-sm me-4" role="button" routerLink="signup/landlord" *ngIf="!token">Publica tu espacio</a>
+    <a class="btn btn-outline-dark btn-sm me-4" role="button" routerLink="signin" *ngIf="!token">Iniciar sesión</a>
     <ul class="navbar-nav mb-2 mb-md-0">      
 
       <li class="nav-item dropdown">
@@ -30,7 +31,7 @@
         </ul>
       </li>
 
-      <li class="nav-item dropdown">
+      <!--<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" role="button" id="cartDropdown" data-bs-toggle="dropdown"
           aria-expanded="false">          
           <ion-icon name="globe-outline" style="padding-top: 7px;"></ion-icon>   
@@ -39,7 +40,7 @@
           <li><a class="dropdown-item">Español</a></li>
           <li><a class="dropdown-item">English</a></li>
         </ul>
-      </li>
+      </li>-->
 
     </ul>
   </div>

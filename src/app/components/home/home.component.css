@@ -3,3 +3,7 @@ img, figure {
   height: auto;
   vertical-align: middle;
 }
+
+#ion-icon-search {
+  font-size: 20px;
+}
