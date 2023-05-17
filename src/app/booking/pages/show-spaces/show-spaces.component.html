@@ -1,0 +1,220 @@
+<app-navbar></app-navbar>
+
+<section>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 py-4 p-xl-5">
+
+        <h2 class="mb-4">Espacios en Albacete, España</h2>
+
+        <hr class="my-4">
+
+        <div class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-4">
+          <div class="me-3">
+            <p class="mb-3 mb-md-0"><strong>12</strong> Espacios encontrados</p>
+          </div>
+
+          <div class="row">
+            <label class="col-sm-4">Ordenar por</label>
+            <div class="col-sm-8">
+              <select class="form-select" id="form_sort" aria-label="Default select example">
+                <option selected>Selecciona uno</option>
+                <option value="1">Más recomendado</option>
+                <option value="2">Más reciente</option>
+                <option value="3">Más antiguo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <!-- place item-->
+          <div class="col-sm-6 mb-5">
+            <div class="card h-100 border-0 shadow">
+
+              <div class="card-img-top">
+                <a routerLink="/booking/detail-space" target="_blank">
+                  <img class="img-fluid" src="../../../../assets/img/apartment1-photo.jpg"
+                    alt="Modern, Well-Appointed Room" />
+                </a>
+              </div>
+
+              <div class="card-body">
+                <div class="w-100">
+                  <h6 class="card-title">
+                    <a class="text-decoration-none text-dark" routerLink="/booking/detail-space" target="_blank">
+                      Modern, Well-Appointed Room
+                    </a>
+                  </h6>
+                  <div class="d-flex card-subtitle mb-3">
+                    <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
+                  </div>
+                  <p class="card-text text-muted">
+                    <span class="h4 text-dark">80€</span> por día
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- place item-->
+          <div class="col-sm-6 mb-5">
+            <div class="card h-100 border-0 shadow">
+
+              <div class="card-img-top">
+                <a routerLink="/detail-space" target="_blank">
+                  <img class="img-fluid" src="../../../../assets/img/apartment1-photo.jpg" alt="Modern, Well-Appointed Room"/>
+                </a>
+              </div>
+
+              <div class="card-body">
+                <div class="w-100">
+                  <h6 class="card-title">
+                    <a class="text-decoration-none text-dark" routerLink="/detail-space" target="_blank">
+                      Modern, Well-Appointed Room
+                    </a>
+                  </h6>
+                  <div class="d-flex card-subtitle mb-3">
+                    <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
+                  </div>
+                  <p class="card-text text-muted">
+                    <span class="h4 text-dark">80€</span> por día
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- place item-->
+          <div class="col-sm-6 mb-5">
+            <div class="card h-100 border-0 shadow">
+
+              <div class="card-img-top">
+                <a routerLink="/detail-space" target="_blank">
+                  <img class="img-fluid" src="../../../../assets/img/apartment1-photo.jpg" alt="Modern, Well-Appointed Room" />
+                </a>
+              </div>
+
+              <div class="card-body">
+                <div class="w-100">
+                  <h6 class="card-title">
+                    <a class="text-decoration-none text-dark" routerLink="/detail-space" target="_blank">
+                      Modern, Well-Appointed Room
+                    </a>
+                  </h6>
+                  <div class="d-flex card-subtitle mb-3">
+                    <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
+                  </div>
+                  <p class="card-text text-muted">
+                    <span class="h4 text-dark">80€</span> por día
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- place item-->
+          <div class="col-sm-6 mb-5">
+            <div class="card h-100 border-0 shadow">
+
+              <div class="card-img-top">
+                <a routerLink="/detail-space" target="_blank">
+                  <img class="img-fluid" src="../../../../assets/img/apartment1-photo.jpg" alt="Modern, Well-Appointed Room" />
+                </a>
+              </div>
+
+              <div class="card-body">
+                <div class="w-100">
+                  <h6 class="card-title">
+                    <a class="text-decoration-none text-dark" routerLink="/detail-space" target="_blank">
+                      Modern, Well-Appointed Room
+                    </a>
+                  </h6>
+                  <div class="d-flex card-subtitle mb-3">
+                    <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
+                  </div>
+                  <p class="card-text text-muted">
+                    <span class="h4 text-dark">80€</span> por día
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- Pagination -->
+
+        <nav aria-label="...">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <span class="page-link text-dark">Previous</span>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item" aria-current="page">
+              <span class="page-link active">2</span>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">3</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <div class="col-lg-6 map-side-lg pe-lg-0">
+        <div class="map-full shadow-left mt-5" id="categorySideMap">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?.
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?.
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis laudantium repudiandae velit ut dolore
+            tempora expedita esse at sed commodi quia, unde nemo? Vel voluptatibus tempore, quia natus porro quisquam?
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<app-footer></app-footer>

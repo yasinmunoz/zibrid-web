@@ -1,49 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from "@auth0/angular-jwt";
-import { IonicModule } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
-import { SigninComponent } from './components/signin/signin.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { SpinnerComponent } from './shared/spinner/spinner.component';
-import { HomeComponent } from './components/home/home.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { AccountComponent } from './components/account/account.component';
-import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
-import { SignupLandlordComponent } from './components/signup-landlord/signup-landlord.component';
+import { SharedModule } from './shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SigninComponent,
-    SignupComponent,
-    ProfileComponent,
-    NavbarComponent,
-    SpinnerComponent,
-    HomeComponent,
-    FooterComponent,
-    AccountComponent,
-    PersonalInfoComponent,
-    SignupLandlordComponent    
+    AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,    
     HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,    
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
@@ -56,7 +33,7 @@ import { SignupLandlordComponent } from './components/signup-landlord/signup-lan
         }
       },
     }),
-    IonicModule.forRoot()
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

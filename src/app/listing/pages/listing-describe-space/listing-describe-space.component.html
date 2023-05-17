@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+
+<div class="progress mb-4" style="height: 5px;">
+  <div class="progress-bar bg-secondary" role="progressbar" aria-label="Example 5px high" style="width: 40%;"
+    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+<div class="container mt-4 mb-5">
+  <h1>¿Cómo es tu espacio?</h1>
+
+  <div class="row mt-5">
+    <div class="form-group col-md-12 mb-3">
+      <label>Descripción del espacio</label>
+      <textarea class="form-control" id="spaceDescriptionInput" rows="6" [(ngModel)]="spaceDescription"></textarea>
+    </div>
+
+    <div class="form-group col-md-12 mb-3">
+      <label>Descripción de la zona donde se encuentra el espacio</label>
+      <textarea class="form-control" id="spacePlaceDescriptionInput" rows="6"
+        [(ngModel)]="spacePlaceDescription"></textarea>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-secondary" (click)="back()">Atrás</button>
+    <button class="btn btn-dark" (click)="addDescriptionSpace()">Siguiente</button>
+  </div>
+
+</div>
+
+<app-footer></app-footer>

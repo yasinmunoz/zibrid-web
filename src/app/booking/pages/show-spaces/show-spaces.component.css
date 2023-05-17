@@ -1,0 +1,15 @@
+.page-item .page-link {
+  color: #000 !important;
+  background: #fff !important;
+}
+
+.map-side-lg .map-full {
+  height: 100vh;
+  min-height: 400px;
+  z-index: 5;
+}
+
+.img-fluid {
+  height: auto;
+  width: 100%
+}

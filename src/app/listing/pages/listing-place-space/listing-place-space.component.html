@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+
+<div class="progress mb-4" style="height: 5px;">
+  <div class="progress-bar bg-secondary" role="progressbar" aria-label="Example 5px high" style="width: 20%;"
+    aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+<div class="container mt-4 mb-5">
+  <h1>¿Dónde se encuentra tu espacio?</h1>
+
+  <div class="row mt-5">
+    <div class="form-group col-md-12 mb-3">
+      <label>Nombre de la propiedad</label>
+      <input type="email" class="form-control" id="inputName" [(ngModel)]="name">
+    </div>
+
+    <div class="form-group col-md-6 mb-3">
+      <label>Tipo de espacio</label>
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="type">
+        <option value="Condo">Apartamento</option>
+        <option value="House">Casa</option>
+        <option value="Coworking">Coworking</option>
+        <option value="Coliving">Coliving</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6 mb-3">
+      <label>País</label>
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="country">
+        <option value="Spain">España</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6 mb-3">
+      <label>Dirección</label>
+      <input type="text" class="form-control" id="inputAddress" [(ngModel)]="address">
+    </div>
+    <div class="form-group col-md-6 mb-3">
+      <label>Dirección Complementaria</label>
+      <input type="text" class="form-control" id="inputComplementaryAddress" [(ngModel)]="complementaryAddress">
+    </div>
+    <div class="form-group col-md-4 mb-3">
+      <label>Ciudad</label>
+      <input type="text" class="form-control" id="inputCity" [(ngModel)]="city">
+    </div>
+    <div class="form-group col-md-4 mb-3">
+      <label>Estado/Provincia</label>
+      <input type="text" class="form-control" id="inputProvince" [(ngModel)]="province">
+    </div>
+    <div class="form-group col-md-4 mb-3">
+      <label>Código Postal</label>
+      <input type="text" class="form-control" id="inputZip" [(ngModel)]="zip">
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <div class="ml-auto">
+      <button class="btn btn-dark" (click)="addPlaceSpace()">Siguiente</button>
+    </div>
+  </div>
+
+</div>
+
+<app-footer></app-footer>

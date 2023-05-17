@@ -1,27 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { ProfileComponent } from './components/profile/profile.component';
-import { SigninComponent } from './components/signin/signin.component';
-import { SignupComponent } from './components/signup/signup.component';
-
-import { AuthGuard } from './guards/signin.guard';
-import { ProfileGuard } from './guards/profile.guard';
-import { HomeComponent } from './components/home/home.component';
-import { AccountComponent } from './components/account/account.component';
-import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
-import { SignupLandlordComponent } from './components/signup-landlord/signup-landlord.component';
-
+import { AccountGuard } from './account/guards/account.guard';
+import { ListingGuard } from './listing/guards/listing.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'signin', component: SigninComponent, canActivate: [ ProfileGuard ], data: { showFooter: true } },
-  { path: 'signup', component: SignupComponent },
-  { path: 'signup/landlord', component: SignupLandlordComponent },
-  { path: 'account', component: AccountComponent, canActivate: [ AuthGuard ] },
-  { path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
-  { path: 'personal-info', component: PersonalInfoComponent, canActivate: [ AuthGuard ] },
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  {
+    path: 'booking',
+    loadChildren: () => import('./booking/booking.module').then( m => m.BookingModule )
+  },
+  {
+    path: 'listing',
+    loadChildren: () => import('./listing/listing.module').then( m => m.ListingModule )    
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule )
+  },
+  {
+    path: 'account',
+    loadChildren: () => import('./account/account.module').then( m => m.AccountModule ),
+    canActivate: [ AccountGuard ]
+  },
+  {
+    path:'**',
+    redirectTo: 'booking',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
