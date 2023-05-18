@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class BookingService {
 
-  //private serverURL: string = 'http://localhost:3000/';
-  private serverURL: string = 'http://3.69.12.0:3000/';
+  private serverURL: string = 'http://localhost:3000/';
+  //private serverURL: string = 'http://3.69.12.0:3000/';
 
   private apiURLAccountUser = 'api/account/users';
 

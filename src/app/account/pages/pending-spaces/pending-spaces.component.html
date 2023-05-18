@@ -1,1 +1,41 @@
-<p>pending-spaces works!</p>
+<app-navbar></app-navbar>
+<section class="py-5">
+
+  <div class="container">
+    
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a class="text-decoration-none text-dark" routerLink="/">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a class="text-decoration-none text-dark" routerLink="/account">Cuenta</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Mis espacios</li>
+    </ol>
+
+    <h1 class="display-5 mb-4">Espacios pendientes de ser publicados</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Dirección</th>
+          <th scope="col">Ciudad</th>
+          <th scope="col">País</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Apartamento 1</td>
+          <td>Prueba apartamento 1</td>
+          <td>Albacete</td>
+          <td>España</td>          
+        </tr>       
+      </tbody>
+    </table>
+
+  </div>
+
+</section>
+<app-footer></app-footer>
