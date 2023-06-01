@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Guest } from '../../interfaces/guest';
 import { ErrorService } from '../../services/error.service';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -18,13 +18,12 @@ export class SignupGuestComponent {
   email: string = '';
   password: string = '';  
   confirmPassword: string = '';
-  phone: string = '';
 
   loading: boolean = false;
 
   constructor(
     private _toastrSvc: ToastrService,
-    private _userSvc: UserService,
+    private _userSvc: AuthService,
     private _router: Router,
     private _errorSvc: ErrorService
   ) { }
@@ -45,8 +44,7 @@ export class SignupGuestComponent {
       name: this.name,
       lastName: this.lastName,
       email: this.email,
-      password: this.password,
-      phone: this.phone,
+      password: this.password,      
       role: 3
     };
 

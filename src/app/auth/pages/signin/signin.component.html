@@ -13,7 +13,7 @@
 
         <div class="d-flex justify-content-between mb-3">
           <div>
-            <h2>Bienvenido de nuevo</h2>            
+            <h2>Bienvenido de nuevo</h2>
           </div>
           <div class="ms-auto text-end">
             <a routerLink="/" class="text-decoration-none text-dark">
@@ -61,13 +61,13 @@
             </div>
           </button>
 
-          <button class="btn btn-lg btn-danger">
+          <button class="btn btn-lg btn-danger" (click)="continueWithGoogle()">
             <div class="d-flex justify-content-center">
               <i class="bi bi-google"></i> <span class="ms-4">Continuar con Google</span>
             </div>
           </button>
-                    
         </div>
+
 
         <div class="text-center mt-5">
           <small class="text-muted">¿Eres propietario?
@@ -76,9 +76,7 @@
         </div>
 
       </div>
-      
+
     </div>
-
   </div>
-
 </div>

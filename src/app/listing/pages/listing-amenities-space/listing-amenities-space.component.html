@@ -6,7 +6,7 @@
 </div>
 
 <div class="container mt-4 mb-5">
-  <h1 class="mb-5">Selecciona sus comodidades</h1>
+  <h1 class="mb-5">Selecciona sus comodidades</h1>  
 
   <div class="form-check" *ngFor="let amenity of allAmenities">
     <input class="form-check-input" type="checkbox" [id]="amenity.name" [checked]="this.amenitiesPropertyNames.includes(amenity.name)" (change)="toggleAmenitySelection(amenity, $event)">

@@ -10,17 +10,16 @@ import { ErrorService } from 'src/app/auth/services/error.service';
   styleUrls: ['./home-guest.component.css']
 })
 export class HomeGuestComponent {
-  
+
   constructor(
     private _router: Router,
     private _jwtHelperSvc: JwtHelperService,
     private _bookingSvc: BookingService,
     private _errorSvc: ErrorService
-  ) {}
+  ) { }
 
 
-  findSpaces () {
-    console.log('Hola');
-    this._router.navigate(['/booking/show-spaces']);
+  findSpaces() {
+    this._router.navigate(['/booking/show-apartments']);
   }
 }

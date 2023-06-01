@@ -23,12 +23,12 @@
           </div>
         </div>
 
-        <div class="form-floating mb-3">          
+        <div class="form-floating mb-3">
           <input type="text" class="form-control" placeholder="Ingrese Nombre" [(ngModel)]="name">
           <label>Nombre</label>
         </div>
 
-        <div class="form-floating mb-3">          
+        <div class="form-floating mb-3">
           <input type="text" class="form-control" placeholder="Ingrese Apellidos" [(ngModel)]="lastName">
           <label>Apellidos</label>
         </div>
@@ -44,36 +44,18 @@
         </div>
 
         <div class="form-floating mb-3">
-          <input type="password" class="form-control" placeholder="Ingrese contraseña de nuevo" [(ngModel)]="confirmPassword">
+          <input type="password" class="form-control" placeholder="Ingrese contraseña de nuevo"
+            [(ngModel)]="confirmPassword">
           <label>Repetir contraseña</label>
         </div>
 
-        <div class="form-floating mb-3">          
+        <div class="form-floating mb-3">
           <input type="text" class="form-control" placeholder="Ingrese teléfono móvil" [(ngModel)]="phone">
           <label>Teléfono móvil</label>
         </div>
 
         <div class="d-grid">
           <button class="btn btn-lg btn-dark" (click)="addUser()">Crear cuenta</button>
-        </div>
-
-        <div class="my-3">
-          <div class="separator" style="font-size: large;">o</div>
-        </div>
-
-
-        <div class="d-grid gap-2">
-          <button class="btn btn-lg btn-info">
-            <div class="d-flex justify-content-center">
-              <i class="bi bi-linkedin"></i> <span class="ms-3">Continuar con Linkedln</span>
-            </div>
-          </button>
-
-          <button class="btn btn-lg btn-danger">
-            <div class="d-flex justify-content-center">
-              <i class="bi bi-google"></i> <span class="ms-4">Continuar con Google</span>
-            </div>
-          </button>
         </div>
 
         <div class="text-center mt-5">
@@ -83,7 +65,7 @@
         </div>
 
       </div>
-      
+
     </div>
 
   </div>

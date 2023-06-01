@@ -4,65 +4,41 @@
 
   <div class="row">
 
-    <div class="col-xl-5 col-lg-6 col-md-6 order-md-1 pt-xl-5 pe-lg-0 mb-3 text-md-start text-center">
-      <h1 class="display-4 mt-lg-5 mb-md-4 mb-3 pt-md-4 pb-lg-2">Encuentra tu espacio de trabajo</h1>
+    <div class="col-xl-5 col-lg-6 col-md-5 order-md-1 pe-lg-0 mb-3 pt-lg-3 text-md-start text-center">
+      <h1 class="display-4 mb-md-4 mb-3 pb-lg-2">Encuentra tu espacio de trabajo</h1>
       <p class="position-relative lead me-lg-n5">Ofrecemos un servicio completo de alquiler de espacios de trabajo
         100%
         online.</p>
     </div>
 
-    <div class="col-xl-7 col-lg-6 col-md-6 order-md-2 mb-4 mb-lg-3">
-      <img src="./../../../../assets/img/home-remote-worker.jpg" alt="Remote worker">
+    <div class="col-xl-7 col-lg-6 col-md-7 order-md-2 mb-lg-3 mb-4">
+      <img src="./../../../../assets/img/home-guest-small.jpg" alt="Remote worker">
     </div>
 
   </div>
 
 </section>
 
-<section class="container mt-5">
 
-  <form class="row align-items-center">
+<section class="container mt-4">
+  <div class="d-flex justify-content-between">
 
-    <div class="col-xl-2 col-lg-6 mb-2">
-      <select class="form-select">
-        <option disabled selected>Tipos de Espacio</option>
-        <option value="all">Todos</option>
-        <option value="condo">Apartamentos</option>
-        <option value="house">Casas</option>
-        <option value="coworking">Coworking</option>
-        <option value="coliving">Coliving</option>
-      </select>
-    </div>
+    <input class="form-control" list="regions" name="browser" id="browser"
+      placeholder="¿Desde dónde quieres teletrabajar?">
+    <datalist id="regions">
+      <option value="Castilla-La Mancha">Castilla-La Mancha</option>
+      <option value="Madrid">Madrid</option>
+      <option value="Andalucía">Andalucía</option>
+      <option value="Asturias">Asturias</option>
+      <option value="Cataluña">Cataluña</option>
+      <option value="Galicia">Galicia</option>
+    </datalist>
 
-    <div class="col-xl-3 col-lg-6 mb-2">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Localización" aria-label="Location"
-          aria-describedby="basic-addon1">
-      </div>
-    </div>
+    <a (click)="findSpaces()" class="btn btn-dark ms-2">
+      Buscar
+    </a>
 
-    <div class="col-xl-3 col-lg-5 mb-2">
-      <div class="input-group">
-        <span class="input-group-text">Desde</span>
-        <input type="date" class="form-control" id="fromDate">
-      </div>
-    </div>
-
-    <div class="col-xl-3 col-lg-5 mb-2">
-      <div class="input-group">
-        <span class="input-group-text">Hasta</span>
-        <input type="date" class="form-control" id="toDate">
-      </div>
-    </div>
-
-    <div class="col-xl-1 col-lg-1 mb-2">
-      <a (click)="findSpaces()" class="btn btn-dark">
-        Buscar
-      </a>
-    </div>
-
-  </form>
-
+  </div>
 </section>
 
 <section class="mt-5 py-6 bg-light">
@@ -120,19 +96,6 @@
   </div>
 
   <div class="row row-cols-lg-6 row-cols-sm-3 row-cols-1 g-3 g-xl-4 justify-content-center">
-
-    <div class="col">
-      <div class="card h-100 border-0 shadow text-center">
-        <div class="card-body">
-          <a class="text-decoration-none" routerLink="/">
-            <div class="text-primary mb-3 mx-auto">
-              <img src="./../../../../assets/img/desk.png" width="60px">
-            </div>
-            <h5 class="text-dark mb-0">Escritorios</h5>
-          </a>
-        </div>
-      </div>
-    </div>
 
     <div class="col">
       <div class="card h-100 border-0 shadow text-center">

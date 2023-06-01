@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MySpacesComponent } from './pages/my-spaces/my-spaces.component';
 import { MyBookingsComponent } from './pages/my-bookings/my-bookings.component';
 import { PendingSpacesComponent } from './pages/pending-spaces/pending-spaces.component';
+import { MySpaceComponent } from './pages/my-space/my-space.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { PendingSpacesComponent } from './pages/pending-spaces/pending-spaces.co
     PersonalInfoComponent,
     MySpacesComponent,
     MyBookingsComponent,
-    PendingSpacesComponent
+    PendingSpacesComponent,
+    MySpaceComponent
   ],
   imports: [
     AccountRoutingModule,

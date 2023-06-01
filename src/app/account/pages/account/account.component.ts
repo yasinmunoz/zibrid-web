@@ -29,6 +29,8 @@ export class AccountComponent implements OnInit {
   }
   ngOnInit(): void {
     this.inicializate();
+
+    console.log(this.userToken);    
   }
 
   async inicializate() {
@@ -36,7 +38,8 @@ export class AccountComponent implements OnInit {
 
     this._accountSvc.getUser(this.userToken.id).subscribe({
       next: (v) => {
-        this.user = v.data;        
+        this.user = v.data;
+        console.log(this.user);
       },
       error: (e: HttpErrorResponse) => {
         this._errorSvc.msgError(e);

@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<section class="py-5">
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-5">
+        <div class="p-4 border-0 shadow ms-lg-4 rounded-3 sticky-top mt-3" style="top: 75px;">
+          <p class="text-muted"><span class="text-dark h2">Nombre del alojamiento</span></p>
+          <hr class="my-4">
+          <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
+            <div class="mb-3">
+              <label class="form-label" for="bookingDate">Llegada / Salida</label>
+              <div class="datepicker-container datepicker-container-right">
+                <input class="form-control" type="text" name="bookingDate" id="bookingDate"
+                  placeholder="Selecciona las fechas">
+              </div>
+            </div>
+            <div class="mb-4">
+              <label class="form-label" for="guests">Huéspedes</label>
+              <select class="form-control" name="guests" id="guests">
+                <option value="1">1 Huésped</option>
+                <option value="2">2 Huéspedes</option>
+                <option value="3">3 Huéspedes</option>
+                <option value="4">4 Huéspedes</option>
+              </select>
+            </div>
+
+            <div>
+              <p class="text-muted text-sm ms-1 mb-0">60€ x 5 días = 300€</p>
+              <p class="text-muted text-sm ms-1 mb-0">2% comisión de servicio = 6€</p>
+              <hr class="my-2">
+              <p class="text-muted text-sm ms-1">Total: 306€</p>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <h1 class="display-5">Confirma y paga tu reserva</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique animi, aliquid aspernatur id enim ea iste
+          sit ullam obcaecati et rerum inventore magni a vel, dignissimos totam asperiores adipisci incidunt.</p>
+        <div class="d-grid mb-4">
+          <a (click)="confirmBook()" class="btn btn-dark">
+            Confirmar y pagar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<app-footer></app-footer>

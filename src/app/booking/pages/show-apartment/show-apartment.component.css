@@ -1,0 +1,18 @@
+#carouselExample {
+  height: 300px; /* Ajusta la altura según tus necesidades */
+  overflow: hidden; /* Oculta el contenido que exceda la altura */
+}
+
+.carousel-inner {
+  height: 100%; /* Establece la altura del carrusel al 100% del contenedor */
+}
+
+.carousel-item {
+  height: 100%; /* Establece la altura de los elementos del carrusel al 100% del contenedor */
+}
+
+.carousel-item img {
+  object-fit: cover; /* Ajusta el tamaño de las imágenes para cubrir todo el espacio disponible */
+  height: 100%; /* Asegura que las imágenes ocupen toda la altura del elemento */
+  width: auto; /* Permite que el ancho de las imágenes se ajuste automáticamente */
+}

@@ -6,6 +6,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { MySpacesComponent } from './pages/my-spaces/my-spaces.component';
 import { MyBookingsComponent } from './pages/my-bookings/my-bookings.component';
 import { PendingSpacesComponent } from './pages/pending-spaces/pending-spaces.component';
+import { MySpaceComponent } from './pages/my-space/my-space.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'my-spaces',
         component: MySpacesComponent
+      },
+      {
+        path: 'my-spaces/:id',
+        component: MySpaceComponent
       },
       {
         path: 'pending-spaces',

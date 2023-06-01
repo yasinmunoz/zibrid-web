@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PendingSpacesComponent } from './pending-spaces.component';
+import { NavbarComponent } from 'src/app/shared/components/navbar/navbar.component';
+import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 
 describe('PendingSpacesComponent', () => {
   let component: PendingSpacesComponent;
@@ -8,7 +10,7 @@ describe('PendingSpacesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PendingSpacesComponent ]
+      declarations: [ PendingSpacesComponent, NavbarComponent, FooterComponent ]
     })
     .compileComponents();
 

@@ -7,29 +7,27 @@ import { SignupGuestComponent } from './pages/signup-guest/signup-guest.componen
 import { SignupLandlordComponent } from './pages/signup-landlord/signup-landlord.component';
 import { FormsModule } from '@angular/forms';
 import { ErrorService } from './services/error.service';
-import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
-import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
   declarations: [
     SigninComponent,
     SignupGuestComponent,
-    SignupLandlordComponent
+    SignupLandlordComponent,
   ],
   imports: [
     AuthRoutingModule,
     FormsModule,
     HttpClientModule,
     CommonModule,    
-    SharedModule,
-    
+    SharedModule,    
   ],
   providers: [
     ErrorService,
-    UserService
+    AuthService
   ],
 })
 export class AuthModule { }

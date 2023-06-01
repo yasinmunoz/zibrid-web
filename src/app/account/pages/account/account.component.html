@@ -17,9 +17,9 @@
 
       <!-- Para todos -->
       <div class="col-12 col-md-4 mb-4">
-        <div class="card h-100 border-0 shadow">
+        <div class="card h-100 border-0 rounded-3 shadow">
           <div class="card-body">
-            <div class="icon-rounded bg-secondary-light mb-3">
+            <div class="mb-3">
               <img src="./../../../assets/img/login.png" alt="Información Personal" width="100px">
             </div>
             <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link"
@@ -30,9 +30,9 @@
       </div>
 
       <!--<div class="col-12 col-md-4 mb-4">
-        <div class="card h-100 border-0 shadow">
+        <div class="card h-100 border-0 rounded-3 shadow">
           <div class="card-body">
-            <div class="icon-rounded bg-secondary-light mb-3">
+            <div class="mb-3">
               <img src="./../../../assets/img/personal-information.png" alt="Información Personal" width="100px">
             </div>
             <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link"
@@ -44,9 +44,9 @@
 
       <!-- Para los propietarios -->
       <div class="col-12 col-md-4 mb-4" *ngIf="this.userToken?.roles?.includes(2)">
-        <div class="card h-100 border-0 shadow">
+        <div class="card h-100 border-0 rounded-3 shadow">
           <div class="card-body">
-            <div class="icon-rounded bg-secondary-light mb-3">
+            <div class="mb-3">
               <img src="./../../../assets/img/workplace.png" alt="Mis espacios" width="100px">
             </div>
             <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link"
@@ -58,9 +58,9 @@
 
       <!-- Para los propietarios -->
       <div class="col-12 col-md-4 mb-4" *ngIf="this.userToken?.roles?.includes(2)">
-        <div class="card h-100 border-0 shadow">
+        <div class="card h-100 border-0 rounded-3 shadow">
           <div class="card-body">
-            <div class="icon-rounded bg-secondary-light mb-3">
+            <div class="mb-3">
               <img src="./../../../assets/img/upload-space.png" alt="Publica tu espacio" width="100px">
             </div>
             <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link"
@@ -72,9 +72,9 @@
 
       <!-- Para los huéspedes -->
       <div class="col-12 col-md-4 mb-4" *ngIf="this.userToken?.roles?.includes(3)">
-        <div class="card h-100 border-0 shadow">
+        <div class="card h-100 border-0 rounded-3 shadow">
           <div class="card-body">
-            <div class="icon-rounded bg-secondary-light mb-3">
+            <div class="mb-3">
               <img src="./../../../assets/img/reservas.png" alt="Mis reservas" width="100px">
             </div>
             <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link"
@@ -86,9 +86,9 @@
 
       <!-- Para los admin -->
       <div class="col-12 col-md-4 mb-4" *ngIf="this.userToken?.roles?.includes(1)">
-        <div class="card h-100 border-0 shadow">
+        <div class="card h-100 border-0 rounded-3 shadow">
           <div class="card-body">
-            <div class="icon-rounded bg-secondary-light mb-3">
+            <div class="mb-3">
               <img src="./../../../assets/img/pending-spaces.png" alt="Espacios pendientes" width="95px">
             </div>
             <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link"

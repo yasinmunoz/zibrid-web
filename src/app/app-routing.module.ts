@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule )
   },
   {
+    path: 'google-auth',
+    loadChildren: () => import('./google-auth/google-auth.module').then( m => m.GoogleAuthModule )
+  },
+  {
     path: 'account',
     loadChildren: () => import('./account/account.module').then( m => m.AccountModule ),
     canActivate: [ AccountGuard ]
@@ -29,7 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled" })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

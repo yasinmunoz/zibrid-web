@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+
+<section>
+
+  <div class="container mt-5">
+    <h2 class="mb-4">Espacios en Castilla-La Mancha, España</h2>
+    
+    <ul class="nav nav-tabs">
+      <li class="nav-item text-dark">
+        <a class="nav-link text-dark" aria-current="page" routerLink="/booking/show-apartments">Apartamentos</a>
+      </li>
+      <li class="nav-item text-dark">
+        <a class="nav-link text-dark" aria-current="page" routerLink="/booking/show-houses">Casas</a>
+      </li>
+      <li class="nav-item text-dark">
+        <a class="nav-link text-dark active" aria-current="page" routerLink="/booking/show-coworkings">Coworking</a>
+      </li>
+      <li class="nav-item text-dark">
+        <a class="nav-link text-dark" aria-current="page" routerLink="/booking/show-colivings">Coliving</a>
+      </li>
+    </ul>
+
+    <div class="row mt-2">
+
+      <!-- place item-->
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-5">
+        <div class="card h-100 border-0 shadow">
+
+          <div class="card-img-top">
+            <a routerLink="/booking/show-coworking" target="_blank">
+              <img class="img-fluid" src="../../../../assets/img/coworking-space-booking.jpg" alt="Coliving 1" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <div class="w-100">
+              <h6 class="card-title">
+                <a class="text-decoration-none text-dark" routerLink="/booking/show-coworking" target="_blank">
+                  Coworking 1
+                </a>
+              </h6>
+              <div class="d-flex card-subtitle mb-3">
+                <p class="flex-grow-1 mb-0 text-muted text-sm">Ciudad Real</p>
+              </div>
+              <p class="card-text text-muted">
+                <span class="h4 text-dark">80€</span> por día
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<app-footer></app-footer>

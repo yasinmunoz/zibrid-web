@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorService } from '../../services/error.service';
 import { Landlord } from '../../interfaces/landlord';
@@ -24,7 +24,7 @@ export class SignupLandlordComponent {
 
   constructor(
     private _toastrSvc: ToastrService,
-    private _userSvc: UserService,
+    private _userSvc: AuthService,
     private _router: Router,
     private _errorSvc: ErrorService
   ) { }

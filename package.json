@@ -1,5 +1,5 @@
 {
-  "name": "zibrid-modules",
+  "name": "zibrid-web",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
     "@auth0/angular-jwt": "^5.1.2",
+    "angular-oauth2-oidc": "^13.0.1",
     "ngx-dropzone": "^3.1.0",
     "ngx-toastr": "^16.1.1",
     "nyc": "^15.1.0",

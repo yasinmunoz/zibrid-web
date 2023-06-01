@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetailSpaceComponent } from './detail-space.component';
+import { ShowHouseComponent } from './show-house.component';
 
-describe('DetailSpaceComponent', () => {
-  let component: DetailSpaceComponent;
-  let fixture: ComponentFixture<DetailSpaceComponent>;
+describe('ShowHouseComponent', () => {
+  let component: ShowHouseComponent;
+  let fixture: ComponentFixture<ShowHouseComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DetailSpaceComponent ]
+      declarations: [ ShowHouseComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DetailSpaceComponent);
+    fixture = TestBed.createComponent(ShowHouseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

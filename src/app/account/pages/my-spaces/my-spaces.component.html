@@ -2,7 +2,7 @@
 <section class="py-5">
 
   <div class="container">
-    
+
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a class="text-decoration-none text-dark" routerLink="/">Home</a>
@@ -14,26 +14,43 @@
     </ol>
 
     <h1 class="display-5 mb-4">Mis espacios</h1>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Tipo</th>
-          <th scope="col">Dirección</th>
-          <th scope="col">Ciudad</th>
-          <th scope="col">País</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Apartamento 1</td>
-          <td>Prueba apartamento 1</td>
-          <td>Albacete</td>
-          <td>España</td>          
-        </tr>       
-      </tbody>
-    </table>
+
+    <div class="row mt-2">
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-5" *ngFor="let mySpace of mySpaces">
+        <div class="card h-100 border-0 shadow">
+          <div class="card-img-top">
+            <a (click)="goToMySpace(mySpace)" target="_blank">
+              <img class="img-fluid" [src]="mySpace.imageBlobURL" alt="Apartment Image" style="cursor: pointer" />
+            </a>
+          </div>
+          <div class="card-body">
+            <div class="w-100">
+              <h6 class="card-title">
+                <a class="text-decoration-none text-dark" (click)="goToMySpace(mySpace)" target="_blank"
+                  style="cursor: pointer">
+                  {{ mySpace.name }}
+                </a>
+              </h6>
+              <div class="d-flex card-subtitle mb-3">
+                <p class="flex-grow-1 mb-0 text-muted text-sm">{{ mySpace.city }}, {{ mySpace.province }}</p>
+              </div>
+              <div class="d-flex justify-content-between">
+                <p class="card-text text-muted">
+                  <span class="h4 text-dark">{{ mySpace.price }}€</span> por día
+                </p>
+                <p *ngIf="mySpace.status">
+                  <span class="badge text-bg-warning">{{ mySpace.status }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
 
   </div>
 
