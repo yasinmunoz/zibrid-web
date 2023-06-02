@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit{
   showPublicarEspacio () {
     this._router.events.subscribe(e => {      
       if (e instanceof NavigationEnd) {
-        if (e.url === '/auth/signup/landlord') {          
+        if (e.url === '/listing') {          
           return false;
         } else {
           return true;

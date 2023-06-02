@@ -12,7 +12,7 @@
   <div class="collapse navbar-collapse justify-content-end me-5 ms-5" id="navbarContent">
 
     <a class="btn btn-outline-dark btn-sm me-4" role="button" routerLink="/listing"
-      *ngIf="!token && showPublicarEspacio">Publica tu espacio</a>
+      *ngIf="!token">Publica tu espacio</a>
     <a class="btn btn-outline-dark btn-sm me-4" role="button" routerLink="/auth/signin" *ngIf="!token">Iniciar sesión</a>
     <ul class="navbar-nav mb-2 mb-md-0" *ngIf="token">
 
