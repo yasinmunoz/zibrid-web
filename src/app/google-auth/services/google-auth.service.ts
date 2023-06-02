@@ -11,7 +11,8 @@ const authCodeFlowConfig: AuthConfig = {
   strictDiscoveryDocumentValidation: false,
 
   // URL of the SPA to redirect the user to after login
-  redirectUri: 'http://localhost:4200/google-auth/signin',
+  //redirectUri: 'http://localhost:4200/google-auth/signin',
+  redirectUri: 'https://zibrid.com/google-auth/signin',
 
   // The SPA's id. The SPA is registerd with this id at the auth-server
   // clientId: 'server.code',
@@ -43,8 +44,8 @@ export class GoogleAuthService {
 
   userProfileSubject = new Subject<UserInfo>();
 
-  serverURL = 'http://localhost:3000/';
-  //this.serverURL = 'http://3.69.12.0:3000/';
+  //serverURL = 'http://localhost:3000/';
+  serverURL = 'http://3.69.12.0:3000/';
   apiURL = 'api/users'
 
   constructor(
