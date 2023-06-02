@@ -6,30 +6,16 @@ import { NavigationEnd, Router } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
 
-  token: string | null = localStorage.getItem('token');    
+  token: string | null = localStorage.getItem('token');
 
   constructor(private _router: Router) {
-    
-  }  
-  
-  ngOnInit(): void {
-    this.showPublicarEspacio();
+
   }
 
-  showPublicarEspacio () {
-    this._router.events.subscribe(e => {      
-      if (e instanceof NavigationEnd) {
-        if (e.url === '/listing') {          
-          return false;
-        } else {
-          return true;
-        }
-      }
-      return false;
-    })
-    
+  ngOnInit(): void {
+
   }
 
   logout() {
@@ -39,7 +25,7 @@ export class NavbarComponent implements OnInit{
       window.location.reload();
     } else {
       localStorage.removeItem('token');
-      window.location.href = '/';      
+      window.location.href = '/';
     }
 
   }
