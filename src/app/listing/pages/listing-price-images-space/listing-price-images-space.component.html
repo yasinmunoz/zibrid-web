@@ -10,12 +10,19 @@
 
   <div class="container mt-5">
 
-    <div class="container d-flex justify-content-center mb-5">
-      <h3>Precio: {{price}}</h3>
+    <div class="d-flex justify-content-center mb-5">      
 
-      <button (click)="increasePrice()">+1</button>
-      <input type="number" [(ngModel)]="price" (blur)="onBlur()" />
-      <button (click)="decreasePrice()">-1</button>
+       <div class="row">        
+        <div class="col">
+          <label class="form-label">Precio por día (€)</label>
+          <div class="d-flex">
+            <div class="btn btn-items bg-dark" (click)="increasePrice()">+</div>
+            <input class="form-control input-price" type="text" [(ngModel)]="price" (blur)="onBlur()">
+            <div class="btn btn-items bg-dark" (click)="decreasePrice()">-</div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
 

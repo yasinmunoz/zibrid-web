@@ -41,10 +41,12 @@
                   <img src="../../../../assets/img/apartment1-photo.jpg" class="d-block w-100" alt="Property Photo 1">
                 </div>
                 <div class="carousel-item">
-                  <img src="../../../../assets/img/coliving-space-booking.jpg" class="d-block w-100" alt="Property Photo 2">
+                  <img src="../../../../assets/img/coliving-space-booking.jpg" class="d-block w-100"
+                    alt="Property Photo 2">
                 </div>
                 <div class="carousel-item">
-                  <img src="../../../../assets/img/coworking-space-booking.jpg" class="d-block w-100" alt="Property Photo 3">
+                  <img src="../../../../assets/img/coworking-space-booking.jpg" class="d-block w-100"
+                    alt="Property Photo 3">
                 </div>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#allPhotosCarousel"
@@ -71,11 +73,11 @@
       <div class="col-lg-8">
 
         <div class="d-flex justify-content-between mb-1">
-          
+
           <div class="mt-4">
             <i class="bi bi-geo-alt-fill"></i> Albacete, Castilla-La Mancha
           </div>
-          
+
           <button type="button" class="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#viewAllModal">
             Ver todas las fotos
           </button>
@@ -167,6 +169,24 @@
           Quam, facilis vero. Ut error, repudiandae minima soluta ipsa consectetur!</p>
 
         <hr class="mt-4">
+
+        <h5 class="mt-4 mb-3">LOCALIZACIÓN</h5>
+        <p>Industria es un barrio de la ciudad española de Albacete localizado en el norte de la capital. Con 16 492
+          habitantes (2012) es uno de los barrios más poblados de Albacete.
+
+          De su pasado industrial quedan vestigios como la Fábrica de Harinas de Albacete, destinada a ser sede de la
+          Consejería de Hacienda y Administraciones Públicas de la Junta de Comunidades de Castilla-La Mancha. También
+          conserva la Locomotora Mikado de Albacete, que rinde homenaje al ferrocarril.</p>
+
+        <!-- mapa -->
+
+        <div id="map"></div>
+
+        <hr class="mt-4">
+
+        <button type="button" class="btn btn-secondary mt-3" (click)="getCoordinates()">
+          Ver localización
+        </button>
       </div>
 
       <div class="col-lg-4">
@@ -178,7 +198,8 @@
             <div class="mb-3">
               <label class="form-label" for="bookingDate">Llegada / Salida</label>
               <div class="datepicker-container datepicker-container-right">
-                <input class="form-control" type="text" name="bookingDate" id="bookingDate" placeholder="Selecciona las fechas">
+                <input class="form-control" type="text" name="bookingDate" id="bookingDate"
+                  placeholder="Selecciona las fechas">
               </div>
             </div>
             <div class="mb-4">

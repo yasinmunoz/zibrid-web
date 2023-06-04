@@ -9,15 +9,40 @@
   <h1>¿Cómo es tu espacio?</h1>
 
   <!-- If type is house or apartment -->
-  <div class="row">
-    <div class="col">
-      Camas
-    </div>
-    <div class="col">
-      Habitaciones
-    </div>
-    <div class="col">
-      Baños
+  <div class="mt-4">
+    <div class="row">
+      <div class="col-lg-3 col-md-6" *ngIf="!isCoworking">
+        <label class="form-label">Camas</label>
+        <div class="d-flex">
+          <div class="btn btn-items bg-dark" (click)="decreaseBeds()">-</div>
+          <input class="form-control input-spaces" disabled [(ngModel)]="beds">
+          <div class="btn btn-items bg-dark" (click)="increaseBeds()">+</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" *ngIf="!isCoworking">
+        <label class="form-label">Habitaciones</label>
+        <div class="d-flex">
+          <div class="btn btn-items bg-dark" (click)="decreaseBedrooms()">-</div>
+          <input class="form-control input-spaces" disabled [(ngModel)]="bedrooms">
+          <div class="btn btn-items bg-dark" (click)="increaseBedrooms()">+</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" *ngIf="!isCoworking">
+        <label class="form-label">Baños</label>
+        <div class="d-flex">
+          <div class="btn btn-items bg-dark" (click)="decreaseBathrooms()">-</div>
+          <input class="form-control input-spaces" disabled [(ngModel)]="bathrooms">
+          <div class="btn btn-items bg-dark" (click)="increaseBathrooms()">+</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <label class="form-label">Escritorios para el teletrabajo</label>
+        <div class="d-flex">
+          <div class="btn btn-items bg-dark" (click)="decreaseWorkspaces()">-</div>
+          <input class="form-control input-spaces" disabled [(ngModel)]="workspaces">
+          <div class="btn btn-items bg-dark" (click)="increaseWorkspaces()">+</div>
+        </div>
+      </div>
     </div>
   </div>
 

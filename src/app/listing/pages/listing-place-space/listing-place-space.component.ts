@@ -23,6 +23,7 @@ export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
   complementaryAddress: string = '';
   city: string = '';
   province: string = '';
+  state: string = '';
   zip: string = '';
 
   constructor(
@@ -51,6 +52,7 @@ export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
       this.complementaryAddress = space.complementaryAddress;
       this.city = space.city;
       this.province = space.province;
+      this.state = space.state;
       this.zip = space.zip;
 
     }
@@ -74,6 +76,7 @@ export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
       complementaryAddress: this.complementaryAddress,
       city: this.city,
       province: this.province,
+      state: this.state,
       zip: this.zip
     };
 
@@ -101,14 +104,13 @@ export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
 
       this._listingSvc.editPlaceSpace(propertyId, propertyPlace).subscribe({
 
-        next: (v) => {
-          console.log(v);
+        next: (v) => {          
           this.nextPage();
         },
         error: (e: HttpErrorResponse) => {
           this._errorSvc.msgError(e);
         }
-      })
+      });
     }
   }
 
@@ -119,9 +121,8 @@ export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
     const propertyId = this.user.landlordProperties[landlordProperties.length - 1];
     console.log(propertyId);
     this._listingSvc.getSpace(propertyId).subscribe({
-      next: (v) => {
-        console.log(v);
-        this._router.navigate(['/listing/describe-space'], { state: { data: v } });
+      next: (v) => {        
+        this._router.navigate(['/listing/describe-space']);
       },
       error: (e: HttpErrorResponse) => {
         this._errorSvc.msgError(e);

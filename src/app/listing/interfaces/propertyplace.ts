@@ -8,5 +8,6 @@ export interface PropertyPlace {
   complementaryAddress: string;
   city: string;
   province: string;
+  state: string;
   zip: string;  
 }

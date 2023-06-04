@@ -1,0 +1,24 @@
+.btn.btn-items {
+  display: inline-block;
+  width: 34px;
+  height: 36px;
+  line-height: 30px;
+  border-radius: 0.375rem;
+  letter-spacing: 0;
+  font-weight: normal;
+  padding: 0;  
+  text-align: center;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.form-control.input-price {
+  width: 4rem;
+  border-color: transparent;
+  margin-left: .6rem;
+  margin-right: .6rem;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  background-color: #FFFFFF;
+}

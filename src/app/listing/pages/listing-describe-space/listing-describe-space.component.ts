@@ -15,9 +15,14 @@ export class ListingDescribeSpaceComponent implements OnInit, OnDestroy {
 
   user: any;
   edit: boolean = false;
+  isCoworking: boolean = false;
 
   spaceDescription: string = '';
   spacePlaceDescription: string = '';
+  beds: number = 0;
+  bedrooms: number = 0;
+  bathrooms: number = 0;
+  workspaces: number = 0;
 
   constructor(
     private _router: Router,
@@ -31,21 +36,75 @@ export class ListingDescribeSpaceComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit(): void {
-    
-    console.log(history.state.data);
-    if (history.state.data != undefined) {
-      this.edit = true;
-      const space = history.state.data.space;
 
-      this.spaceDescription = space.spaceDescription;
-      this.spacePlaceDescription = space.spacePlaceDescription;
-    }
+    this.inicializate();
 
     window.addEventListener('beforeunload', this.onWindowClose);
   }
 
+  async inicializate() {
+    const landlordProperties = this.user.landlordProperties;
+    const propertyId = this.user.landlordProperties[landlordProperties.length - 1];
+
+    this._listingSvc.getSpace(propertyId).subscribe({
+
+      next: (v) => {
+        const space = v.space;
+        console.log(space);
+        this.beds = space.beds;
+        this.bedrooms = space.bedrooms;
+        this.bathrooms = space.bathrooms;
+        this.workspaces = space.workspaces;
+        this.spaceDescription = space.spaceDescription;
+        this.spacePlaceDescription = space.spacePlaceDescription;
+        if (space.type == 'Coworking') this.isCoworking = true;
+        else this.isCoworking = false;
+      },
+      error: (e: HttpErrorResponse) => {
+        this._errorSvc.msgError(e);
+      }
+    });
+  }
+
   ngOnDestroy() {
     window.removeEventListener('beforeunload', this.onWindowClose);
+  }
+
+
+  increaseBeds() {
+    this.beds += 1;
+  }
+
+  decreaseBeds() {
+    this.beds -= 1;
+    if (this.beds < 0) this.beds = 0;
+  }
+
+  increaseBedrooms() {
+    this.bedrooms += 1;
+  }
+
+  decreaseBedrooms() {
+    this.bedrooms -= 1;
+    if (this.bedrooms < 0) this.bedrooms = 0;
+  }
+
+  increaseBathrooms() {
+    this.bathrooms += 1;
+  }
+
+  decreaseBathrooms() {
+    this.bathrooms -= 1;
+    if (this.bathrooms < 0) this.bathrooms = 0;
+  }
+
+  increaseWorkspaces() {
+    this.workspaces += 1;
+  }
+
+  decreaseWorkspaces() {
+    this.workspaces -= 1;
+    if (this.workspaces < 0) this.workspaces = 0;
   }
 
   addDescriptionSpace() {
@@ -53,6 +112,10 @@ export class ListingDescribeSpaceComponent implements OnInit, OnDestroy {
     const propertyDescription: any = {
       email: this.user.email,
 
+      beds: this.beds,
+      bedrooms: this.bedrooms,
+      bathrooms: this.bathrooms,
+      workspaces: this.workspaces,
       spaceDescription: this.spaceDescription,
       spacePlaceDescription: this.spacePlaceDescription
     };
@@ -96,13 +159,13 @@ export class ListingDescribeSpaceComponent implements OnInit, OnDestroy {
 
     const propertyId = this.user.landlordProperties[landlordProperties.length - 1];
     this._listingSvc.getAmenitiesSpace(propertyId).subscribe({
-      next: (v) => {        
+      next: (v) => {
         this._router.navigate(['/listing/amenities-space'], { state: { data: v } });
       },
       error: (e: HttpErrorResponse) => {
         this._errorSvc.msgError(e);
       }
-    })    
+    })
   }
 
   back() {

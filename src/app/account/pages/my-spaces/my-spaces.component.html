@@ -35,10 +35,10 @@
                 <p class="flex-grow-1 mb-0 text-muted text-sm">{{ mySpace.city }}, {{ mySpace.province }}</p>
               </div>
               <div class="d-flex justify-content-between">
-                <p class="card-text text-muted">
+                <p class="card-text text-muted mb-0">
                   <span class="h4 text-dark">{{ mySpace.price }}€</span> por día
                 </p>
-                <p *ngIf="mySpace.status">
+                <p *ngIf="mySpace.status == 'Pendiente'">
                   <span class="badge text-bg-warning">{{ mySpace.status }}</span>
                 </p>
               </div>

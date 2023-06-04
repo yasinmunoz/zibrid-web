@@ -37,6 +37,7 @@ export class ListingPriceImagesSpaceComponent {
 
   decreasePrice(): void {
     this.price -= 1;
+    if(this.price < 0) this.price = 0;
   }
 
 	onSelect(event: any) {
