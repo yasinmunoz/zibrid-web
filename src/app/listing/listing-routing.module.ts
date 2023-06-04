@@ -22,22 +22,27 @@ const routes: Routes = [
         canActivate: [ ListingGuard ]
       },
       {
-        path: 'describe-space',
+        path: 'place-space/:id',
+        component: ListingPlaceSpaceComponent,
+        canActivate: [ ListingGuard ]
+      },
+      {
+        path: 'describe-space/:id',
         component: ListingDescribeSpaceComponent,
         canActivate: [ ListingGuard ]
       },
       {
-        path: 'amenities-space',
+        path: 'amenities-space/:id',
         component: ListingAmenitiesSpaceComponent,
         canActivate: [ ListingGuard ]
       },
       {
-        path: 'price-images-space',
+        path: 'price-images-space/:id',
         component: ListingPriceImagesSpaceComponent,
         canActivate: [ ListingGuard ]
       },
       {
-        path: 'finish-listing',
+        path: 'finish-listing/:id',
         component: ListingFinishSpaceComponent,
         canActivate: [ ListingGuard ]
       }

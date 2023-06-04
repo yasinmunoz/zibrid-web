@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { PropertyPlace } from 'src/app/listing/interfaces/propertyplace';
 import { ListingService } from '../../services/listing.service';
@@ -12,6 +12,8 @@ import { ErrorService } from 'src/app/auth/services/error.service';
   styleUrls: ['./listing-place-space.component.css']
 })
 export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
+
+  propertyId?: any;
 
   user: any;
   edit: boolean = false;
@@ -29,6 +31,7 @@ export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
   constructor(
     private _router: Router,
     private _jwtHelperSvc: JwtHelperService,
+    private _activatedRoute: ActivatedRoute,
     private _listingSvc: ListingService,
     private _errorSvc: ErrorService
   ) {
@@ -37,36 +40,51 @@ export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
       this.user = this._jwtHelperSvc.decodeToken(token);
     }
   }
+
   ngOnInit(): void {
 
-    console.log(history.state.data);
-    console.log(this.edit);
-    if (history.state.data != undefined) {
-      this.edit = true;
-      const space = history.state.data.space;
-      
-      this.name = space.name;
-      this.type = space.type;
-      this.country = space.country;
-      this.address = space.address;
-      this.complementaryAddress = space.complementaryAddress;
-      this.city = space.city;
-      this.province = space.province;
-      this.state = space.state;
-      this.zip = space.zip;
-
-    }
+    this.inicializate();
 
     window.addEventListener('beforeunload', this.onWindowClose);
   }
 
-  ngOnDestroy() {
-    window.removeEventListener('beforeunload', this.onWindowClose);
+  async inicializate() {
+
+    this.propertyId = this._activatedRoute.snapshot.paramMap.get('id');
+
+    if (this.propertyId) {
+      console.log('Comprobación del id', this.propertyId);
+      console.log('Estamos editando');
+      this.edit = true;
+
+      this._listingSvc.getSpace(this.propertyId).subscribe({
+        next: async (v) => {
+          const space = v.space;
+          console.log(v.space);
+
+          this.name = space.name;
+          this.type = space.type;
+          this.country = space.country;
+          this.address = space.address;
+          this.complementaryAddress = space.complementaryAddress;
+          this.city = space.city;
+          this.province = space.province;
+          this.state = space.state;
+          this.zip = space.zip;
+        },
+        error: (e: HttpErrorResponse) => {
+          this._errorSvc.msgError(e);
+        }
+      });
+
+    } else {
+      console.log('Estamos creando');
+    }
   }
 
-  addPlaceSpace() {
+  nextPage() {
 
-    const propertyPlace: PropertyPlace = {
+    const property: PropertyPlace = {
       email: this.user.email,
 
       name: this.name,
@@ -78,19 +96,24 @@ export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
       province: this.province,
       state: this.state,
       zip: this.zip
-    };
+    };    
 
     if (!this.edit) {
-      this._listingSvc.createPlaceSpace(propertyPlace).subscribe({
+      
+      this._listingSvc.createPlaceSpace(property).subscribe({
         next: (v) => {
           if (v.token) {
             localStorage.setItem('token', v.token);
             const token = localStorage.getItem("token");
+            console.log(token);
             if (token) {
               this.user = this._jwtHelperSvc.decodeToken(token);
+              const landlordProperties = this.user.landlordProperties;
+
+              this.propertyId = this.user.landlordProperties[landlordProperties.length - 1];
             }
           }
-          this.nextPage();
+          this._router.navigate(['/listing/describe-space/', this.propertyId]);
         },
         error: (e: HttpErrorResponse) => {
           this._errorSvc.msgError(e);
@@ -98,44 +121,30 @@ export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
       })
     }
     else {
-      const landlordProperties = this.user.landlordProperties;
+      this._listingSvc.editPlaceSpace(this.propertyId, property).subscribe({
 
-      const propertyId = this.user.landlordProperties[landlordProperties.length - 1];
-
-      this._listingSvc.editPlaceSpace(propertyId, propertyPlace).subscribe({
-
-        next: (v) => {          
-          this.nextPage();
+        next: (v) => {
+          this._router.navigate(['/listing/describe-space/', this.propertyId]);
         },
         error: (e: HttpErrorResponse) => {
           this._errorSvc.msgError(e);
         }
       });
     }
-  }
 
-  nextPage() {
-
-    const landlordProperties = this.user.landlordProperties;
-
-    const propertyId = this.user.landlordProperties[landlordProperties.length - 1];
-    console.log(propertyId);
-    this._listingSvc.getSpace(propertyId).subscribe({
-      next: (v) => {        
-        this._router.navigate(['/listing/describe-space']);
-      },
-      error: (e: HttpErrorResponse) => {
-        this._errorSvc.msgError(e);
-      }
-    })    
   }
 
   back() {
     this._router.navigate(['/listing/about-landlord']);
   }
 
+  ngOnDestroy() {
+    window.removeEventListener('beforeunload', this.onWindowClose);
+  }
+
   onWindowClose(event: BeforeUnloadEvent) {
     event.preventDefault();
     event.returnValue = 'Si recargas la página, perderás todos los datos que hayas ingresado';
   }
+
 }

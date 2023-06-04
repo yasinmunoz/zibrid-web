@@ -18,5 +18,9 @@ export class ErrorService {
       this._toastrSvc.error('UPPS ocurrió un error, comuníquese con el administrador.', 'Error');
     }
   }
+
+  customError(msg: string){
+    this._toastrSvc.error(msg);
+  }
   
 }

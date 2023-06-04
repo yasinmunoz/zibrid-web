@@ -5,7 +5,7 @@
     aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
-<div class="container mt-4 mb-5">
+<div class="container mt-4 mb-5" *ngIf="this.mySpace">
   <h1>Solo queda fijar el precio y subir unas buenas fotos...</h1>
 
   <div class="container mt-5">
@@ -17,7 +17,7 @@
           <label class="form-label">Precio por día (€)</label>
           <div class="d-flex">
             <div class="btn btn-items bg-dark" (click)="increasePrice()">+</div>
-            <input class="form-control input-price" type="text" [(ngModel)]="price" (blur)="onBlur()">
+            <input class="form-control input-price" type="text" [(ngModel)]="this.mySpace.price" (blur)="onBlur()">
             <div class="btn btn-items bg-dark" (click)="decreasePrice()">-</div>
           </div>
         </div>

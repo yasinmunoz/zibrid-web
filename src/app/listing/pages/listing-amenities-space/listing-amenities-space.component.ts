@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ListingService } from '../../services/listing.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ErrorService } from 'src/app/auth/services/error.service';
@@ -12,21 +12,22 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ListingAmenitiesSpaceComponent implements OnInit, OnDestroy {
 
+  propertyId?: any;
+
   user: any;
-  edit: boolean = false;
+  isCoworking: boolean = false;
 
-  allAmenities: any[] = [];
+  mySpace: any;
+  allAmenities: any;
   amenitiesProperty: any[] = [];
-  amenitiesPropertyNames: any[] = [];
 
-  ergonomicChair: boolean = true;
-  adjustableDesk: boolean = false;
-  highSpeedInternet: boolean = true;
+  amenitiesPropertyNames: any[] = [];
 
   constructor(
     private _router: Router,
     private _listingSvc: ListingService,
     private _jwtHelperSvc: JwtHelperService,
+    private _activatedRoute: ActivatedRoute,
     private _errorSvc: ErrorService
   ) {
     const token = localStorage.getItem("token");
@@ -39,32 +40,43 @@ export class ListingAmenitiesSpaceComponent implements OnInit, OnDestroy {
 
     this.inicializate();
 
-    if (history.state.data != undefined) {
-      this.edit = true;
-      this.amenitiesProperty = history.state.data.space.propertyAmenities;
-
-      this.amenitiesPropertyNames = this.amenitiesProperty.map((amenity: any) => amenity.name);
-    }
-
     window.addEventListener('beforeunload', this.onWindowClose);
   }
 
   async inicializate() {
 
+    this.propertyId = this._activatedRoute.snapshot.paramMap.get('id');
+
     this._listingSvc.getAllAmenities().subscribe({
       next: (v) => {
         this.allAmenities = v.data.allAmenities;
+        //console.log(this.allAmenities);
       },
       error: (e: HttpErrorResponse) => {
         this._errorSvc.msgError(e);
       }
-    })
+    });
+
+    this._listingSvc.getSpace(this.propertyId).subscribe({
+      next: (v) => {
+        this.mySpace = v.space;
+        console.log(this.mySpace);
+
+        this.amenitiesPropertyNames = this.mySpace.amenities.map((amenity: { name: any; }) => amenity.name);
+        this.amenitiesProperty = this.mySpace.amenities;
+        //console.log(this.amenitiesProperty);
+
+        if (this.mySpace.type == 'Coworking') this.isCoworking = true;
+        else this.isCoworking = false;
+      },
+      error: (e: HttpErrorResponse) => {
+        this._errorSvc.msgError(e);
+      }
+    });
+
 
   }
 
-  ngOnDestroy() {
-    window.removeEventListener('beforeunload', this.onWindowClose);
-  }
 
   toggleAmenitySelection(amenity: any, event: any) {
 
@@ -79,52 +91,49 @@ export class ListingAmenitiesSpaceComponent implements OnInit, OnDestroy {
       }
     }
 
-    console.log(this.amenitiesProperty);
+    this.mySpace.amenities = this.amenitiesProperty;
   }
-
+  
   nextPage() {
 
-    this._router.navigate(['/listing/price-images-space']);
+    if (this.mySpace.amenities.length === 0) {
+      this._errorSvc.customError('Seleccione al menos una comodidad');
+    } else {
+      this._listingSvc.editPlaceSpace(this.propertyId, this.mySpace).subscribe({
+
+        next: (v) => {
+          this._router.navigate(['/listing/price-images-space', this.propertyId]);
+        },
+        error: (e: HttpErrorResponse) => {
+          this._errorSvc.msgError(e);
+        }
+      });
+    }
+
   }
 
   back() {
+    if (this.mySpace.amenities.length === 0) {
+      this._errorSvc.customError('Seleccione al menos una comodidad');
+    } else {
+      this._listingSvc.editPlaceSpace(this.propertyId, this.mySpace).subscribe({
 
-    const landlordProperties = this.user.landlordProperties;
-
-    const propertyId = this.user.landlordProperties[landlordProperties.length - 1];
-    this._listingSvc.getSpace(propertyId).subscribe({
-      next: (v) => {
-        console.log(v);
-        this._router.navigate(['/listing/describe-space'], { state: { data: v } });
-      },
-      error: (e: HttpErrorResponse) => {
-        this._errorSvc.msgError(e);
-      }
-    })
+        next: (v) => {
+          this._router.navigate(['/listing/describe-space', this.propertyId]);
+        },
+        error: (e: HttpErrorResponse) => {
+          this._errorSvc.msgError(e);
+        }
+      });
+    }
 
   }
 
-  addAmenitiesSpace() {
-    const landlordProperties = this.user.landlordProperties;
-
-    const propertyId = this.user.landlordProperties[landlordProperties.length - 1];
-
-    console.log(this.amenitiesProperty);
-
-    this._listingSvc.editAmenitiesSpace(propertyId, this.amenitiesProperty).subscribe({
-      next: (v) => {
-        console.log(v)
-        this.nextPage();
-      },
-      error: (e: HttpErrorResponse) => {
-        console.log(e);
-        this._errorSvc.msgError(e);
-      }
-    })
+  ngOnDestroy() {
+    window.removeEventListener('beforeunload', this.onWindowClose);
   }
 
   onWindowClose(event: BeforeUnloadEvent) {
-
     event.preventDefault();
     event.returnValue = 'Si recargas la página, perderás todos los datos que hayas ingresado';
   }

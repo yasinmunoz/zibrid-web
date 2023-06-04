@@ -68,6 +68,9 @@ export class ListingService {
   }
 
 
+  
+
+
   // DESCRIPTION SPACE
   getDescriptionSpace(propertyId: number): Observable<any> {
 

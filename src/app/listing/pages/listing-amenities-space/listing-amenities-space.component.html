@@ -5,7 +5,7 @@
     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
-<div class="container mt-4 mb-5">
+<div class="container mt-4 mb-5" *ngIf="this.allAmenities">
   <h1 class="mb-5">Selecciona sus comodidades</h1>  
 
   <div class="form-check" *ngFor="let amenity of allAmenities">
@@ -15,7 +15,7 @@
 
   <div class="d-flex justify-content-between mt-3">
     <button class="btn btn-secondary" (click)="back()">Atrás</button>
-    <button class="btn btn-dark" (click)="addAmenitiesSpace()">Siguiente</button>
+    <button class="btn btn-dark" (click)="nextPage()">Siguiente</button>
   </div>
 
 </div>
