@@ -180,7 +180,10 @@
 
         <!-- mapa -->
 
-        <div id="map"></div>
+        <div id="map-container">
+          <div id="map">
+          </div>
+        </div>
 
         <hr class="mt-4">
 
@@ -194,13 +197,10 @@
         <div class="p-4 border-0 shadow ms-lg-4 rounded-3 sticky-top mt-3" style="top: 75px;">
           <p class="text-muted"><span class="text-dark h2">60€</span> por día</p>
           <hr class="my-4">
-          <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
+          <form class="form">
             <div class="mb-3">
-              <label class="form-label" for="bookingDate">Llegada / Salida</label>
-              <div class="datepicker-container datepicker-container-right">
-                <input class="form-control" type="text" name="bookingDate" id="bookingDate"
-                  placeholder="Selecciona las fechas">
-              </div>
+              <label class="form-label">Llegada / Salida</label>
+              <input class="form-control" type="text" placeholder="Selecciona las fechas">
             </div>
             <div class="mb-4">
               <label class="form-label" for="guests">Huéspedes</label>

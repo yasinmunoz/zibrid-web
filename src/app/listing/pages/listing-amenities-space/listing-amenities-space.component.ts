@@ -57,9 +57,9 @@ export class ListingAmenitiesSpaceComponent implements OnInit, OnDestroy {
       }
     });
 
-    this._listingSvc.getSpace(this.propertyId).subscribe({
+    this._listingSvc.getPropertyById(this.propertyId).subscribe({
       next: (v) => {
-        this.mySpace = v.space;
+        this.mySpace = v.property;
         console.log(this.mySpace);
 
         this.amenitiesPropertyNames = this.mySpace.amenities.map((amenity: { name: any; }) => amenity.name);
@@ -74,9 +74,7 @@ export class ListingAmenitiesSpaceComponent implements OnInit, OnDestroy {
       }
     });
 
-
   }
-
 
   toggleAmenitySelection(amenity: any, event: any) {
 
@@ -99,7 +97,7 @@ export class ListingAmenitiesSpaceComponent implements OnInit, OnDestroy {
     if (this.mySpace.amenities.length === 0) {
       this._errorSvc.customError('Seleccione al menos una comodidad');
     } else {
-      this._listingSvc.editPlaceSpace(this.propertyId, this.mySpace).subscribe({
+      this._listingSvc.editProperty(this.propertyId, this.mySpace).subscribe({
 
         next: (v) => {
           this._router.navigate(['/listing/price-images-space', this.propertyId]);
@@ -116,7 +114,7 @@ export class ListingAmenitiesSpaceComponent implements OnInit, OnDestroy {
     if (this.mySpace.amenities.length === 0) {
       this._errorSvc.customError('Seleccione al menos una comodidad');
     } else {
-      this._listingSvc.editPlaceSpace(this.propertyId, this.mySpace).subscribe({
+      this._listingSvc.editProperty(this.propertyId, this.mySpace).subscribe({
 
         next: (v) => {
           this._router.navigate(['/listing/describe-space', this.propertyId]);

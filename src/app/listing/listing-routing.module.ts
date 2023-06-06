@@ -42,7 +42,7 @@ const routes: Routes = [
         canActivate: [ ListingGuard ]
       },
       {
-        path: 'finish-listing/:id',
+        path: 'finish-listing',
         component: ListingFinishSpaceComponent,
         canActivate: [ ListingGuard ]
       }

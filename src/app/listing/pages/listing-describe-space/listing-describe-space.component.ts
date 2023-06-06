@@ -43,10 +43,10 @@ export class ListingDescribeSpaceComponent implements OnInit, OnDestroy {
 
     this.propertyId = this._activatedRoute.snapshot.paramMap.get('id');
 
-    this._listingSvc.getSpace(this.propertyId).subscribe({
+    this._listingSvc.getPropertyById(this.propertyId).subscribe({
 
       next: (v) => {
-        this.mySpace = v.space;
+        this.mySpace = v.property;
         console.log(this.mySpace);
 
         if (this.mySpace.type == 'Coworking') this.isCoworking = true;
@@ -96,7 +96,7 @@ export class ListingDescribeSpaceComponent implements OnInit, OnDestroy {
 
   nextPage() {
 
-    this._listingSvc.editPlaceSpace(this.propertyId, this.mySpace).subscribe({
+    this._listingSvc.editProperty(this.propertyId, this.mySpace).subscribe({
 
       next: (v) => {
         console.log(v);
@@ -110,7 +110,7 @@ export class ListingDescribeSpaceComponent implements OnInit, OnDestroy {
   }
 
   back() {
-    this._listingSvc.editPlaceSpace(this.propertyId, this.mySpace).subscribe({
+    this._listingSvc.editProperty(this.propertyId, this.mySpace).subscribe({
 
       next: (v) => {
         console.log(v);

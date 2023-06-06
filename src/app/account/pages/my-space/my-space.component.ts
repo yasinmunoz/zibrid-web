@@ -1,19 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AccountService } from '../../services/account.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorService } from 'src/app/auth/services/error.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
+import * as mapboxgl from 'mapbox-gl';
+
+(mapboxgl as any).accessToken = 'pk.eyJ1IjoieWFzaW5tdW5veiIsImEiOiJjbDlkNjF4ZW8wMWpjM3ZwYmF0bmJsdGNzIn0.K0bcPYP7QBi9mJyD_ByQUg';
+
 @Component({
   selector: 'app-my-space',
   templateUrl: './my-space.component.html',
   styleUrls: ['./my-space.component.css']
 })
-export class MySpaceComponent implements OnInit {
+export class MySpaceComponent implements OnInit, AfterViewInit {
 
   id?: any;
   mySpace: any;
+
+  longitud: any;
+  latitud: any;
+
   amenities: any;
   images: any[] = [];
   imageUrls: string[] = []; // Array de URLs generadas para las imágenes
@@ -31,22 +39,50 @@ export class MySpaceComponent implements OnInit {
     this.inicializate();
   }
 
+  async ngAfterViewInit(): Promise<void> {
+
+    const map = new mapboxgl.Map({
+      container: 'map', // container ID
+      style: 'mapbox://styles/mapbox/outdoors-v12', // style URL
+      center: [-1.861535, 39.002574], // starting position [lng, lat]
+      zoom: 14, // starting zoom
+    });
+  }
+
   async inicializate() {
 
     this._accountSvc.getPropertyById(this.id).subscribe({
       next: async (v) => {
-        this.mySpace = v.space;
-        this.amenities = v.space.amenities;
+        this.mySpace = v.property;
+        this.amenities = v.property.amenities;
         console.log(this.mySpace);
         console.log(this.amenities);
         this.setData();
         console.log(this.imageUrls);
+        this.getCoordinates();
+      },
+      error: (e: HttpErrorResponse) => {
+        this._errorSvc.msgError(e);
+      }
+    });
+
+  }
+
+  getCoordinates() {
+    const address = this.mySpace.address;
+    const city = this.mySpace.city;
+    const country = this.mySpace.country;
+
+    this._accountSvc.searchWord(`${address}, ${city}, ${country}`).subscribe({
+      next: async (v) => {
+        console.log(v);
       },
       error: (e: HttpErrorResponse) => {
         this._errorSvc.msgError(e);
       }
     });
   }
+
 
   // Preparo los datos que voy a mostrar salvo la imageBlobURL
   setData() {
@@ -58,7 +94,7 @@ export class MySpaceComponent implements OnInit {
         this.getPropertyImageUrl(image.uuidImage);
       }
     }
-    
+
 
   }
 
@@ -74,5 +110,7 @@ export class MySpaceComponent implements OnInit {
       }
     });
   }
+
+
 
 }

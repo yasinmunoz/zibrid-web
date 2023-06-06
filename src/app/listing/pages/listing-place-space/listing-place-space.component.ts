@@ -57,10 +57,10 @@ export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
       console.log('Estamos editando');
       this.edit = true;
 
-      this._listingSvc.getSpace(this.propertyId).subscribe({
+      this._listingSvc.getPropertyById(this.propertyId).subscribe({
         next: async (v) => {
-          const space = v.space;
-          console.log(v.space);
+          const space = v.property;
+          console.log(v.property);
 
           this.name = space.name;
           this.type = space.type;
@@ -100,7 +100,7 @@ export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
 
     if (!this.edit) {
       
-      this._listingSvc.createPlaceSpace(property).subscribe({
+      this._listingSvc.createProperty(property).subscribe({
         next: (v) => {
           if (v.token) {
             localStorage.setItem('token', v.token);
@@ -121,7 +121,7 @@ export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
       })
     }
     else {
-      this._listingSvc.editPlaceSpace(this.propertyId, property).subscribe({
+      this._listingSvc.editProperty(this.propertyId, property).subscribe({
 
         next: (v) => {
           this._router.navigate(['/listing/describe-space/', this.propertyId]);

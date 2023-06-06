@@ -36,7 +36,6 @@ export class MySpacesComponent implements OnInit {
   ngOnInit(): void {
 
     this.inicializate();
-
   }
 
   async inicializate() {

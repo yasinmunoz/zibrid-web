@@ -8,101 +8,44 @@ import { PropertyPlace } from 'src/app/listing/interfaces/propertyplace';
 })
 export class ListingService {
 
-  private serverURL: string;
+  private REST_API_URL: string = 'http://localhost:3000/';
+  //private REST_API_URL: string = 'http://3.69.12.0:3000/';
 
-  // Space URL
-  private apiURLSpace: string;
-
-  // Place Space URLs
-  private apiURLPlaceSpace: string;
-
-  // Description Space URLs
-  private apiURLDescriptionSpace: string;
-
-  // Amenities Space URLs
-  private apiURLAmenitiesSpace: string;
-
-  // Price-Image Space URLs
-  private apiURLPriceImageSpace: string;
+  private PROPERTIES_URL: string = 'api/properties/';
+  private AMENITIES_URL: string = 'api/amenities';
 
   constructor(
     private _http: HttpClient
-  ) {
-    this.serverURL = 'http://localhost:3000/';
-    //this.serverURL = 'http://3.69.12.0:3000/';
+  ) { }
 
-    // Space URL
-    this.apiURLSpace = 'api/listing/space'
+  // SPACE
+  getPropertyById(propertyId: number): Observable<any> {
 
-    // Place Space URLs    
-    this.apiURLPlaceSpace = 'api/listing/place-space';
-
-    // Description Space URLs
-    this.apiURLDescriptionSpace = 'api/listing/describe-space';
-    
-    // Amenities Space URLs
-    this.apiURLAmenitiesSpace = 'api/listing/amenities-space';
-
-    // Price-Image Space URLs
-    this.apiURLPriceImageSpace = 'api/listing/price-images-space';
-
+    return this._http.get(`${this.REST_API_URL}${this.PROPERTIES_URL}` + propertyId);
   }
 
-  //PLACE SPACE
-  createPlaceSpace(propertyPlace: PropertyPlace): Observable<any> {
+  createProperty(propertyPlace: PropertyPlace): Observable<any> {
 
     const token = localStorage.getItem("token");
     const headers = new HttpHeaders().set('authorization', `Bearer ${token}`);
-    console.log(propertyPlace);
-    return this._http.post(`${this.serverURL}${this.apiURLPlaceSpace}`, propertyPlace, { headers });
+
+    return this._http.post(`${this.REST_API_URL}${this.PROPERTIES_URL}new`, propertyPlace, { headers });
   }
 
-  getSpace(propertyId: number): Observable<any> {
+  editProperty(propertyId: number, propertyPlace: any): Observable<any> {
 
-    return this._http.get(`${this.serverURL}${this.apiURLSpace}/` + propertyId);
+    return this._http.put(`${this.REST_API_URL}${this.PROPERTIES_URL}${propertyId}`, propertyPlace);
   }
 
-  editPlaceSpace(propertyId: number, propertyPlace: any): Observable<any> {
+  // IMAGES SPACE
+  uploadPropertyImagesAndSetPrice(formData: FormData): Observable<any> {
 
-    return this._http.put(`${this.serverURL}${this.apiURLPlaceSpace}/${propertyId}`, propertyPlace);
+    return this._http.post(`${this.REST_API_URL}${this.PROPERTIES_URL}images-price`, formData);
   }
 
+  // AMENITIES
+  getAllAmenities(): Observable<any> {
 
-  
-
-
-  // DESCRIPTION SPACE
-  getDescriptionSpace(propertyId: number): Observable<any> {
-
-    return this._http.get(`${this.serverURL}${this.apiURLDescriptionSpace}/` + propertyId);
-  }
-
-  editDescriptionSpace(propertyId: number, descriptionSpace: any): Observable<any> {
-
-    return this._http.put(`${this.serverURL}${this.apiURLDescriptionSpace}/${propertyId}`, descriptionSpace);
-  }
-
-
-  // AMENITIES SPACE
-  getAllAmenities (): Observable<any> {
-
-    return this._http.get(`${this.serverURL}${this.apiURLAmenitiesSpace}`);
-  }
-
-  getAmenitiesSpace(propertyId: number): Observable<any> {
-
-    return this._http.get(`${this.serverURL}${this.apiURLAmenitiesSpace}/` + propertyId);
-  }
-
-  editAmenitiesSpace(propertyId: number, amenitiesSpace: any): Observable<any> {
-
-    return this._http.put(`${this.serverURL}${this.apiURLAmenitiesSpace}/${propertyId}`, amenitiesSpace);
-  }
-
-
-  // IMAGES-PRICE SPACE
-  createImages(formData: FormData): Observable<any> {
-
-    return this._http.post(`${this.serverURL}${this.apiURLPriceImageSpace}`, formData);
+    return this._http.get(`${this.REST_API_URL}${this.AMENITIES_URL}`);
   }
 }

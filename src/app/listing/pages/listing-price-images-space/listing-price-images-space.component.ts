@@ -43,9 +43,9 @@ export class ListingPriceImagesSpaceComponent implements OnInit {
   async inicializate() {
     this.propertyId = this._activatedRoute.snapshot.paramMap.get('id');
 
-    this._listingSvc.getSpace(this.propertyId).subscribe({
+    this._listingSvc.getPropertyById(this.propertyId).subscribe({
       next: (v) => {
-        this.mySpace = v.space;
+        this.mySpace = v.property;
         if (!this.mySpace.price) this.mySpace.price = this.price;        
         console.log(this.mySpace);
 
@@ -98,7 +98,7 @@ export class ListingPriceImagesSpaceComponent implements OnInit {
 
     console.log(formData);
 
-    this._listingSvc.createImages(formData).subscribe({
+    this._listingSvc.uploadPropertyImagesAndSetPrice(formData).subscribe({
       next: (res) => {
         //console.log(res);
         this._router.navigate(['/listing/finish-listing']);
@@ -110,7 +110,7 @@ export class ListingPriceImagesSpaceComponent implements OnInit {
   }
 
   back() {
-    this._listingSvc.editPlaceSpace(this.propertyId, this.mySpace).subscribe({
+    this._listingSvc.editProperty(this.propertyId, this.mySpace).subscribe({
 
       next: (v) => {
         console.log(v);

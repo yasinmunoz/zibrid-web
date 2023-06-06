@@ -17,7 +17,13 @@
   width: auto; /* Permite que el ancho de las imágenes se ajuste automáticamente */
 }
 
-#map {
-  width: 840px;
+#map-container {
   height: 300px;
+  width: 100%;
+}
+
+#map {
+  position: relative;
+  height: inherit;
+  width: inherit;
 }
