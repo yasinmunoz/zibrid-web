@@ -8,8 +8,8 @@ import { environment } from 'src/environments/environment';
 })
 export class AccountService {
 
-  private REST_API_URL: string = 'http://localhost:3000/';
-  //private REST_API_URL: string = 'http://3.69.12.0:3000/';
+  //private REST_API_URL: string = 'http://localhost:3000/';
+  private REST_API_URL: string = 'http://3.69.12.0:3000/';
 
   private USERS_URL = 'api/users/';
   private PROPERTIES_URL = 'api/properties/'
@@ -35,9 +35,24 @@ export class AccountService {
     return this._http.get(`${this.REST_API_URL}${this.PROPERTIES_URL}` + propertyId);
   }
 
-  getPendingProperties(): Observable<any>{
+  getPendingProperties(): Observable<any> {
 
     return this._http.get(`${this.REST_API_URL}${this.PROPERTIES_URL}pending`);
+  }
+
+  deleteProperty(propertyId: number): Observable<any> {
+
+    return this._http.delete(`${this.REST_API_URL}${this.PROPERTIES_URL}` + propertyId);
+  }
+
+  editProperty(propertyId: number, propertyPlace: any): Observable<any> {
+
+    return this._http.put(`${this.REST_API_URL}${this.PROPERTIES_URL}${propertyId}`, propertyPlace);
+  }
+
+  validateProperty(propertyId: number, propertyPlace: any): Observable<any> {
+
+    return this._http.put(`${this.REST_API_URL}${this.PROPERTIES_URL}verified/${propertyId}`, propertyPlace);
   }
 
   // IMAGES

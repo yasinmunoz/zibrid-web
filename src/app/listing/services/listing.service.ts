@@ -8,8 +8,8 @@ import { PropertyPlace } from 'src/app/listing/interfaces/propertyplace';
 })
 export class ListingService {
 
-  private REST_API_URL: string = 'http://localhost:3000/';
-  //private REST_API_URL: string = 'http://3.69.12.0:3000/';
+  //private REST_API_URL: string = 'http://localhost:3000/';
+  private REST_API_URL: string = 'http://3.69.12.0:3000/';
 
   private PROPERTIES_URL: string = 'api/properties/';
   private AMENITIES_URL: string = 'api/amenities';

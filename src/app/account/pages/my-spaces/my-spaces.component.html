@@ -15,19 +15,20 @@
 
     <h1 class="display-5 mb-4">Mis espacios</h1>
 
-    <div class="row mt-2">
+    <h6 class="text-center" *ngIf="this.mySpaces.length == 0">No tienes espacios</h6>
+
+    <div class="row mt-2" *ngIf="this.mySpaces.length != 0">
       <div class="col-sm-6 col-md-4 col-lg-3 mb-5" *ngFor="let mySpace of mySpaces">
-        <div class="card h-100 border-0 shadow">
+        <div class="card h-100 border-0 shadow" *ngIf="mySpace.status == 'Pending' || mySpace.status == 'Verified'">
           <div class="card-img-top">
-            <a (click)="goToMySpace(mySpace)" target="_blank">
-              <img class="img-fluid" [src]="mySpace.imageBlobURL" alt="Apartment Image" style="cursor: pointer" />
+            <a (click)="goToMySpace(mySpace)">
+              <img class="img-fluid pointer" [src]="mySpace.imageBlobURL" alt="Apartment Image" />
             </a>
           </div>
           <div class="card-body">
             <div class="w-100">
               <h6 class="card-title">
-                <a class="text-decoration-none text-dark" (click)="goToMySpace(mySpace)" target="_blank"
-                  style="cursor: pointer">
+                <a class="text-decoration-none text-dark pointer" (click)="goToMySpace(mySpace)">
                   {{ mySpace.name }}
                 </a>
               </h6>
@@ -38,8 +39,14 @@
                 <p class="card-text text-muted mb-0">
                   <span class="h4 text-dark">{{ mySpace.price }}€</span> por día
                 </p>
-                <p *ngIf="mySpace.status == 'Pendiente'">
-                  <span class="badge text-bg-warning">{{ mySpace.status }}</span>
+                <p *ngIf="!mySpace.status">
+                  <span class="badge text-bg-danger">No completado</span>
+                </p>
+                <p *ngIf="mySpace.status == 'Pending'">
+                  <span class="badge text-bg-warning">{{ 'Pendiente' }}</span>
+                </p>
+                <p *ngIf="mySpace.status == 'Verified'">
+                  <span class="badge text-bg-success">{{ 'Verificado' }}</span>
                 </p>
               </div>
             </div>

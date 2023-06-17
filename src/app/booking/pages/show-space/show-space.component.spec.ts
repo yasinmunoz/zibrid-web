@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowHousesComponent } from './show-houses.component';
+import { ShowApartmentComponent } from './show-space.component';
 import { NavbarComponent } from 'src/app/shared/components/navbar/navbar.component';
 import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 
-describe('ShowHousesComponent', () => {
-  let component: ShowHousesComponent;
-  let fixture: ComponentFixture<ShowHousesComponent>;
+describe('ShowApartmentComponent', () => {
+  let component: ShowApartmentComponent;
+  let fixture: ComponentFixture<ShowApartmentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShowHousesComponent, NavbarComponent, FooterComponent ]
+      declarations: [ ShowApartmentComponent, NavbarComponent, FooterComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ShowHousesComponent);
+    fixture = TestBed.createComponent(ShowApartmentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

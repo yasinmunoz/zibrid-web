@@ -6,35 +6,35 @@ import { BookingRoutingModule } from './booking-routing.module';
 import { HomeGuestComponent } from './pages/home-guest/home-guest.component';
 import { SharedModule } from '../shared/shared.module';
 import { ShowSpacesComponent } from './pages/show-spaces/show-spaces.component';
-import { ShowApartmentsComponent } from './pages/show-apartments/show-apartments.component';
-import { ShowHousesComponent } from './pages/show-houses/show-houses.component';
-import { ShowCoworkingsComponent } from './pages/show-coworkings/show-coworkings.component';
-import { ShowColivingsComponent } from './pages/show-colivings/show-colivings.component';
-import { ShowHouseComponent } from './pages/show-house/show-house.component';
-import { ShowColivingComponent } from './pages/show-coliving/show-coliving.component';
-import { ShowCoworkingComponent } from './pages/show-coworking/show-coworking.component';
-import { ShowApartmentComponent } from './pages/show-apartment/show-apartment.component';
+import { ShowSpaceComponent } from './pages/show-space/show-space.component';
 import { ConfirmBookingComponent } from './pages/confirm-booking/confirm-booking.component';
 
+import { BsDatepickerModule, BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { esLocale } from 'ngx-bootstrap/locale';
+defineLocale('es', esLocale);
+
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     HomeGuestComponent,
-    ShowSpacesComponent,    
-    ShowApartmentsComponent,
-    ShowHousesComponent,
-    ShowCoworkingsComponent,
-    ShowColivingsComponent,
-    ShowApartmentComponent,
-    ShowHouseComponent,
-    ShowColivingComponent,
-    ShowCoworkingComponent,
-    ConfirmBookingComponent
+    ShowSpacesComponent,
+    ShowSpaceComponent,
+    ConfirmBookingComponent,
   ],
   imports: [
     BookingRoutingModule,
-    CommonModule,    
-    SharedModule
+    CommonModule,
+    FormsModule,
+    SharedModule,
+    TooltipModule.forRoot(),
+    BsDatepickerModule.forRoot(),
   ]
 })
-export class BookingModule { }
+export class BookingModule {
+  constructor(private bsLocaleService: BsLocaleService) {
+    this.bsLocaleService.use('es');//fecha en español, datepicker
+  }
+}

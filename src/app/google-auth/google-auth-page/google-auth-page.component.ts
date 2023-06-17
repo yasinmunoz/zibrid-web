@@ -43,7 +43,7 @@ export class GoogleAuthPageComponent {
         localStorage.setItem('token', token);
         this.previousUrl = localStorage.getItem('access_google_checkout');
 
-        if (this.previousUrl == 'show-apartment') this._router.navigate(['/booking/confirm-booking']);      
+        if (this.previousUrl == 'show-space') this._router.navigate(['/booking/confirm-booking']);      
         else this._router.navigate(['/account']);
         
         localStorage.removeItem('access_google_checkout');

@@ -1,0 +1,201 @@
+<app-navbar></app-navbar>
+
+<!-- Modal -->
+<div class="modal fade" id="viewAllModal" tabindex="-1" aria-labelledby="viewAllModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewAllModalLabel">Fotos del {{ this.space?.type }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="allPhotosCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let imageURL of imageUrls; let i = index" [class.active]="i === 0">
+              <img [src]="imageURL" class="d-block w-100" alt="Property Photo 1">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#allPhotosCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#allPhotosCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <ol class="breadcrumb mt-4">
+    <li class="breadcrumb-item">
+      <a class="text-decoration-none text-dark" routerLink="/">Buscar espacios</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a class="text-decoration-none text-dark" routerLink="/booking/show-spaces/{{ this.space?.state }}">Apartamentos
+        en
+        {{ this.space?.state }}</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Apartamento</li>
+  </ol>
+
+  <div class="row">
+    <div class="col-lg-8">
+
+      <div class="d-flex justify-content-between mb-1 justify-content-end">
+        <div class="mt-4" *ngIf="this.space?.city === this.space?.province">
+          <i class="bi bi-geo-alt-fill"></i> {{ this.space?.city }} Capital
+        </div>
+
+        <div class="mt-4" *ngIf="this.space?.city != this.space?.province">
+          <i class="bi bi-geo-alt-fill"></i> {{ this.space?.city }}, {{ this.space?.province }}
+        </div>
+
+        <div class="text-end">
+          <button type="button" class="btn btn-secondary mt-3 me-2" data-bs-toggle="modal"
+            data-bs-target="#viewAllModal">
+            Ver fotos del espacio
+          </button>
+        </div>
+      </div>
+
+      <h1>{{ this.space?.name }}</h1>
+      <h5 class="text-muted mb-4">{{ this.space?.type }}</h5>
+
+      <ul class="list-inline text-sm">
+        <li class="list-inline-item me-3">
+          <i class="fa fa-door-open me-1"></i> {{ this.space?.bedrooms }} habitaciones
+        </li>
+        <li class="list-inline-item me-3">
+          <i class="fa fa-bed me-1"></i> {{ this.space?.beds }} camas
+        </li>
+        <li class="list-inline-item me-3">
+          <i class="fa fa-bath me-1"></i> {{ this.space?.bathrooms }} baños
+        </li>
+        <li class="list-inline-item me-3">
+          <img [src]="'./../../../../assets/icons/office_desk.svg'" width="16px"> {{ this.space?.workspaces }}
+          Estaciones de trabajo
+        </li>
+      </ul>
+
+      <h5 class="mt-4 mb-3">DESCRIPCIÓN</h5>
+      <p>{{ this.space?.spaceDescription }}</p>
+
+      <hr class="mt-4">
+
+      <h5 class="mt-4 mb-3">COMODIDADES PARA EL TELETRABAJO</h5>
+      <div class="row">
+
+        <div class="col-md-3" *ngFor="let amenity of amenities">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="text-primary mb-3 mx-auto">
+                <img [src]="'./../../../../assets/icons/' + amenity.name + '.svg'" width="40px">
+              </div>
+              <p class="text-dark mb-0">{{ this.amenity?.description }}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <h5 class="mt-4">RESTO DE COMODIDADES</h5>
+      <div class="row">
+
+        <div class="col-md-3">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="text-primary mb-3 mx-auto">
+                <img src="./../../../../assets/icons/ergonomicChair.png" width="32px">
+              </div>
+              <p class="text-dark mb-0">Silla Ergonómica</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="text-primary mb-4 mx-auto">
+                <img src="./../../../../assets/icons/highSpeedInternet.png" width="32px">
+              </div>
+              <p class="text-dark mb-0">Wifi velocidad hasta 300MB</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="text-primary mb-3 mx-auto">
+                <img src="./../../../../assets/icons/laptop-stand.png" width="32px">
+              </div>
+              <p class="text-dark mb-0">Soporte para portátil</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="text-primary mb-3 mx-auto">
+                <img src="./../../../../assets/icons/laptop-stand.png" width="32px">
+              </div>
+              <p class="text-dark mb-0">Soporte para portátil</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="mt-4">
+
+      <h5 class="mt-4 mb-3">LOCALIZACIÓN</h5>
+      <p>Prueba Descripción Localización Espacio TFG</p>
+
+      <section>
+        <div class="container">
+
+          <div id="map-container">
+            <div id="map">
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="p-3 mt-3 rounded-3 sticky-top border-0 shadow " style="top: 65px;">
+        <p class="text-muted"><span class="text-dark h2">{{ this.space?.price }}€</span> por día</p>
+        <hr class="my-4">
+        <div class="mb-3">
+          <label class="form-label">Días de reserva</label>
+          <input class="form-control" placeholder="Selecciona las fechas" bsDaterangepicker
+            [bsConfig]="{ selectWeekDateRange: true, containerClass:'theme-default' }" [(ngModel)]="this.bookingDates">
+        </div>
+
+        <div class="d-grid mb-4">
+          <a (click)="bookSpace()" class="btn btn-dark">
+            Reservar
+          </a>
+        </div>
+
+        <div *ngIf="bookingDates && bookingDates.length > 0">
+          <!-- Contenido del div cuando bookingDates no está vacío -->
+          <p class="text-muted text-sm ms-1 mb-0">{{ this.space.price }}€ x {{ getBookingDays() }} días = {{ getBookingPrice() | number:'1.2-2' }}€</p>
+          <p class="text-muted text-sm ms-1 mb-0">Comisión de servicio ({{ getServiceFee() }}%): {{ getServiceFeePrice() | number:'1.2-2' }} €</p>
+          <hr class="my-2">
+          <p class="text-muted text-sm ms-1"><strong>Total: {{ getBookingTotalPrice() | number:'1.2-2' }}€</strong></p>          
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

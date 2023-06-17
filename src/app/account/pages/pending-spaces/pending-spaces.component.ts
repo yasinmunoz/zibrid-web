@@ -12,7 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class PendingSpacesComponent implements OnInit {
 
-  pendingSpaces: any;
+  pendingSpaces: any[] = [];
 
   constructor(
     private _jwtHelperSvc: JwtHelperService,
@@ -37,6 +37,37 @@ export class PendingSpacesComponent implements OnInit {
         this._errorSvc.msgError(e);
       }
     })
-    
+
+  }
+
+  editSpace(pendingSpaceId: number) {
+    console.log(pendingSpaceId);
+    this._router.navigate(['listing/place-space/', pendingSpaceId]);
+  }
+
+  deleteSpace(pendingSpaceId: number) {
+
+    this._accountSvc.deleteProperty(pendingSpaceId).subscribe({
+      next: (v) => {
+        const deletedSpace = v.data;
+        this.pendingSpaces = this.pendingSpaces.filter((item: { id: any; }) => item.id !== deletedSpace.id);
+      },
+      error: (e: HttpErrorResponse) => {
+        this._errorSvc.msgError(e);
+      }
+    })
+  }
+
+  validateSpace(pendingSpace: any) {
+      
+    this._accountSvc.validateProperty(pendingSpace.id, pendingSpace).subscribe({
+      next: (v) => {
+        const verifiedSpace = v.data;        
+        this.pendingSpaces = this.pendingSpaces.filter((item: { id: any; }) => item.id !== verifiedSpace.propertyId);        
+      },
+      error: (e: HttpErrorResponse) => {
+        this._errorSvc.msgError(e);
+      }
+    });
   }
 }

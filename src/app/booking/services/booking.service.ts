@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,10 +8,11 @@ import { environment } from 'src/environments/environment';
 })
 export class BookingService {
 
-  private serverURL: string = 'http://localhost:3000/';
-  //private serverURL: string = 'http://3.69.12.0:3000/';
+  //private REST_API_URL: string = 'http://localhost:3000/';
+  private REST_API_URL: string = 'http://3.69.12.0:3000/';
 
-  private apiURLUser = 'api/users';
+  private USERS_URL = 'api/users/';
+  private PROPERTIES_URL = 'api/properties/'
 
   constructor(
     private _http: HttpClient
@@ -28,4 +29,40 @@ export class BookingService {
     )
   }
 
+  getPropertyLocations(): Observable<any> {
+
+    return this._http.get(`${this.REST_API_URL}${this.PROPERTIES_URL}locations`);
+  }
+
+  // IMAGES
+  getImages(imageUrl: string): Observable<any> {
+
+    return this._http.get(`${this.REST_API_URL}${this.PROPERTIES_URL}image/${imageUrl}`, { responseType: 'blob' })
+  }
+
+  // SPACES
+  getApartmentsByLocation(location: string): Observable<any> {
+
+    return this._http.get(`${this.REST_API_URL}${this.PROPERTIES_URL}apartments/${location}`);
+  }
+
+  getHousesByLocation(location: string): Observable<any> {
+
+    return this._http.get(`${this.REST_API_URL}${this.PROPERTIES_URL}houses/${location}`);
+  }
+
+  getCoworkingsByLocation(location: string): Observable<any> {
+
+    return this._http.get(`${this.REST_API_URL}${this.PROPERTIES_URL}coworkings/${location}`);
+  }
+
+  getColivingsByLocation(location: string): Observable<any> {
+
+    return this._http.get(`${this.REST_API_URL}${this.PROPERTIES_URL}colivings/${location}`);
+  }
+
+  getPropertyById(propertyId: number): Observable<any> {
+
+    return this._http.get(`${this.REST_API_URL}${this.PROPERTIES_URL}` + propertyId);
+  }
 }

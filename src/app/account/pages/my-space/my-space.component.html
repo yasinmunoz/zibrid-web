@@ -1,203 +1,177 @@
 <app-navbar></app-navbar>
 
-<section *ngIf="mySpace">
-
-  <div class="container-fuid">
-
-    <div id="carouselExample" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="carousel-item" *ngFor="let imageURL of imageUrls; let i = index" [class.active]="i === 0">
-          <img [src]="imageURL" class="d-block w-100" alt="...">
-        </div>
+<!-- Modal -->
+<div class="modal fade" id="viewAllModal" tabindex="-1" aria-labelledby="viewAllModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewAllModalLabel">Fotos del {{ this.mySpace?.type }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="viewAllModal" tabindex="-1" aria-labelledby="viewAllModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="viewAllModalLabel">Fotos del {{ this.mySpace.type }}</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div id="allPhotosCarousel" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item" *ngFor="let imageURL of imageUrls; let i = index" [class.active]="i === 0">
-                  <img [src]="imageURL" class="d-block w-100" alt="Property Photo 1">
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#allPhotosCarousel"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#allPhotosCarousel"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+      <div class="modal-body">
+        <div id="allPhotosCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let imageURL of imageUrls; let i = index" [class.active]="i === 0">
+              <img [src]="imageURL" class="d-block w-100" alt="Property Photo 1">
             </div>
           </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#allPhotosCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#allPhotosCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <ol class="breadcrumb mt-4">
+    <li class="breadcrumb-item">
+      <a class="text-decoration-none text-dark" routerLink="/">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a class="text-decoration-none text-dark" routerLink="/account">Cuenta</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a class="text-decoration-none text-dark" routerLink="/account/my-spaces">Mis Espacios</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Mi espacio</li>
+  </ol>
+
+  <div class="d-flex justify-content-between mb-1 justify-content-end">
+    <div class="mt-4" *ngIf="this.mySpace?.city === this.mySpace?.province">
+      <i class="bi bi-geo-alt-fill"></i> {{ this.mySpace?.city }} Capital
+    </div>
+
+    <div class="mt-4" *ngIf="this.mySpace?.city != this.mySpace?.province">
+      <i class="bi bi-geo-alt-fill"></i> {{ this.mySpace?.city }}, {{ this.mySpace?.province }}
+    </div>
+
+    <div class="text-end">
+      <button type="button" class="btn btn-secondary mt-3 me-2" data-bs-toggle="modal" data-bs-target="#viewAllModal">
+        Ver fotos del espacio
+      </button>
+      <button type="button" class="btn btn-secondary mt-3 me-2" (click)="editSpace(this.mySpace?.propertyId)"
+        *ngIf="this.mySpace?.status == 'Verified'">
+        Editar espacio
+      </button>
+      <button type="button" class="btn btn-danger mt-3" (click)="deleteSpace(this.mySpace?.propertyId)"
+        *ngIf="this.mySpace?.status == 'Verified'">
+        Borrar espacio
+      </button>
+    </div>
+  </div>
+
+  <h1>{{ this.mySpace?.name }}</h1>
+  <h5 class="text-muted mb-4">{{ this.mySpace?.type }}</h5>
+
+  <ul class="list-inline text-sm">
+    <li class="list-inline-item me-3">
+      <i class="fa fa-door-open me-1"></i> {{ this.mySpace?.bedrooms }} habitaciones
+    </li>
+    <li class="list-inline-item me-3">
+      <i class="fa fa-bed me-1"></i> {{ this.mySpace?.beds }} camas
+    </li>
+    <li class="list-inline-item me-3">
+      <i class="fa fa-bath me-1"></i> {{ this.mySpace?.bathrooms }} baños
+    </li>
+    <li class="list-inline-item me-3">
+      <img [src]="'./../../../../assets/icons/office_desk.svg'" width="16px"> {{ this.mySpace?.workspaces }} Estaciones
+      de trabajo
+    </li>
+  </ul>
+
+  <h5 class="mt-4 mb-3">DESCRIPCIÓN</h5>
+  <p>{{ this.mySpace?.spaceDescription }}</p>
+
+  <hr class="mt-4">
+
+  <h5 class="mt-4 mb-3">COMODIDADES PARA EL TELETRABAJO</h5>
+  <div class="row">
+
+    <div class="col-md-3" *ngFor="let amenity of amenities">
+      <div class="card h-100 text-center">
+        <div class="card-body">
+          <div class="text-primary mb-3 mx-auto">
+            <img [src]="'./../../../../assets/icons/' + amenity.name + '.svg'" width="40px">
+          </div>
+          <p class="text-dark mb-0">{{ this.amenity?.description }}</p>
         </div>
       </div>
     </div>
 
   </div>
 
-  <div class="container">
+  <h5 class="mt-4">RESTO DE COMODIDADES</h5>
+  <div class="row">
 
-    <ol class="breadcrumb mt-4">
-      <li class="breadcrumb-item">
-        <a class="text-decoration-none text-dark" routerLink="/">Home</a>
-      </li>
-      <li class="breadcrumb-item">
-        <a class="text-decoration-none text-dark" routerLink="/account">Cuenta</a>
-      </li>
-      <li class="breadcrumb-item">
-        <a class="text-decoration-none text-dark" routerLink="/account/my-spaces">Mis Espacios</a>
-      </li>
-      <li class="breadcrumb-item active" aria-current="page">Mi espacio</li>
-    </ol>
-
-    <div class="d-flex justify-content-between mb-1">
-
-      <div class="mt-4" *ngIf="this.mySpace.city === this.mySpace.province">
-        <i class="bi bi-geo-alt-fill"></i> {{ this.mySpace.city }} Capital       
+    <div class="col-md-3">
+      <div class="card h-100 text-center">
+        <div class="card-body">
+          <div class="text-primary mb-3 mx-auto">
+            <img src="./../../../../assets/icons/ergonomicChair.png" width="32px">
+          </div>
+          <p class="text-dark mb-0">Silla Ergonómica</p>
+        </div>
       </div>
-
-      <div class="mt-4" *ngIf="this.mySpace.city != this.mySpace.province">
-        <i class="bi bi-geo-alt-fill"></i> {{ this.mySpace.city }}, {{ this.mySpace.province }}   
-      </div>
-
-      <button type="button" class="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#viewAllModal">
-        Ver todas las fotos
-      </button>
     </div>
 
-    <h1>{{ this.mySpace.name }}</h1>
-    <h5 class="text-muted mb-4">{{ this.mySpace.type }}</h5>
-
-    <ul class="list-inline text-sm">
-      <li class="list-inline-item me-3">
-        <i class="fa fa-door-open me-1"></i> {{ this.mySpace.bedrooms }} habitaciones
-      </li>
-      <li class="list-inline-item me-3">
-        <i class="fa fa-bed me-1"></i> {{ this.mySpace.beds }} camas
-      </li>
-      <li class="list-inline-item me-3">
-        <i class="fa fa-bath me-1"></i> {{ this.mySpace.bathrooms }} baños
-      </li>
-      <li class="list-inline-item me-3">
-        <img [src]="'./../../../../assets/icons/office_desk.svg'" width="16px"> {{ this.mySpace.workspaces }} Estaciones de trabajo
-      </li>
-    </ul>
-
-    <h5 class="mt-4 mb-3">DESCRIPCIÓN</h5>
-    <p>{{ this.mySpace.spaceDescription }}</p>
-
-    <hr class="mt-4">
-
-    <h5 class="mt-4 mb-3">COMODIDADES PARA EL TELETRABAJO</h5>
-    <div class="row">
-
-      <div class="col-md-3" *ngFor="let amenity of amenities">
-        <div class="card h-100 text-center">
-          <div class="card-body">
-            <div class="text-primary mb-3 mx-auto">
-              <img [src]="'./../../../../assets/icons/' + amenity.name + '.svg'" width="40px">
-            </div>
-            <p class="text-dark mb-0">{{ this.amenity.description }}</p>
+    <div class="col-md-3">
+      <div class="card h-100 text-center">
+        <div class="card-body">
+          <div class="text-primary mb-4 mx-auto">
+            <img src="./../../../../assets/icons/highSpeedInternet.png" width="32px">
           </div>
+          <p class="text-dark mb-0">Wifi velocidad hasta 300MB</p>
         </div>
       </div>
-
     </div>
 
-    <h5 class="mt-4">RESTO DE COMODIDADES</h5>
-    <div class="row">
-
-      <div class="col-md-3">
-        <div class="card h-100 text-center">
-          <div class="card-body">
-            <div class="text-primary mb-3 mx-auto">
-              <img src="./../../../../assets/icons/ergonomicChair.png" width="32px">
-            </div>
-            <p class="text-dark mb-0">Silla Ergonómica</p>
+    <div class="col-md-3">
+      <div class="card h-100 text-center">
+        <div class="card-body">
+          <div class="text-primary mb-3 mx-auto">
+            <img src="./../../../../assets/icons/laptop-stand.png" width="32px">
           </div>
+          <p class="text-dark mb-0">Soporte para portátil</p>
         </div>
       </div>
-
-      <div class="col-md-3">
-        <div class="card h-100 text-center">
-          <div class="card-body">
-            <div class="text-primary mb-4 mx-auto">
-              <img src="./../../../../assets/icons/highSpeedInternet.png" width="32px">
-            </div>
-            <p class="text-dark mb-0">Wifi velocidad hasta 300MB</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="card h-100 text-center">
-          <div class="card-body">
-            <div class="text-primary mb-3 mx-auto">
-              <img src="./../../../../assets/icons/laptop-stand.png" width="32px">
-            </div>
-            <p class="text-dark mb-0">Soporte para portátil</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="card h-100 text-center">
-          <div class="card-body">
-            <div class="text-primary mb-3 mx-auto">
-              <img src="./../../../../assets/icons/laptop-stand.png" width="32px">
-            </div>
-            <p class="text-dark mb-0">Soporte para portátil</p>
-          </div>
-        </div>
-      </div>
-
     </div>
 
-    <hr class="mt-4">
+    <div class="col-md-3">
+      <div class="card h-100 text-center">
+        <div class="card-body">
+          <div class="text-primary mb-3 mx-auto">
+            <img src="./../../../../assets/icons/laptop-stand.png" width="32px">
+          </div>
+          <p class="text-dark mb-0">Soporte para portátil</p>
+        </div>
+      </div>
+    </div>
 
-    <h5 class="mt-4 mb-3">LOCALIZACIÓN</h5>
-    <p>Industria es un barrio de la ciudad española de Albacete localizado en el norte de la capital. Con 16 492
-      habitantes (2012) es uno de los barrios más poblados de Albacete.
-
-      De su pasado industrial quedan vestigios como la Fábrica de Harinas de Albacete, destinada a ser sede de la
-      Consejería de Hacienda y Administraciones Públicas de la Junta de Comunidades de Castilla-La Mancha. También
-      conserva la Locomotora Mikado de Albacete, que rinde homenaje al ferrocarril.</p>
   </div>
 
-</section>
+  <hr class="mt-4">
 
-<section>
-  <div class="container">
+  <h5 class="mt-4 mb-3">LOCALIZACIÓN</h5>
+  <p>Industria es un barrio de la ciudad española de Albacete localizado en el norte de la capital. Con 16 492
+    habitantes (2012) es uno de los barrios más poblados de Albacete.
 
-    <div id="map-container">
-      <div id="map">
-      </div>
+    De su pasado industrial quedan vestigios como la Fábrica de Harinas de Albacete, destinada a ser sede de la
+    Consejería de Hacienda y Administraciones Públicas de la Junta de Comunidades de Castilla-La Mancha. También
+    conserva la Locomotora Mikado de Albacete, que rinde homenaje al ferrocarril.</p>
+
+  <div id="map-container">
+    <div id="map">
     </div>
-
-    <hr class="mt-4">
-
-    <button type="button" class="btn btn-secondary mt-3" (click)="getCoordinates()">
-      Ver localización
-    </button>
   </div>
-</section>
+
+</div>
 
 <app-footer></app-footer>

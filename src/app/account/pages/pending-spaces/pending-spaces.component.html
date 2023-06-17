@@ -14,16 +14,18 @@
     </ol>
 
     <h1 class="display-5 mb-4">Espacios pendientes de ser publicados</h1>
-    <table class="table">
+    <h6 class="text-center" *ngIf="this.pendingSpaces.length == 0">No existen espacios pendientes</h6>
+    <table class="table" *ngIf="this.pendingSpaces.length != 0">
       <thead>
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Nombre Espacio</th>
           <th scope="col">Dirección</th>
           <th scope="col">Localidad</th>
-          <th scope="col">Nombre propietario</th>
+          <th scope="col">Propietario</th>
           <th scope="col">Teléfono</th>
           <th scope="col">Estado</th>
+          <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -32,13 +34,20 @@
           <td>{{ pendingSpace.name }}</td>
           <td>{{ pendingSpace.address }}</td>
           <td>{{ pendingSpace.city }}</td>
-          <td>{{ pendingSpace.userId }}</td>
+          <td>{{ pendingSpace.user.name }} {{ pendingSpace.user.lastName }}</td>
           <td>15975382</td>
-          <td *ngIf="pendingSpace.status == 'Pendiente'">
-            <span class="badge text-bg-warning">{{ pendingSpace.status }}</span>
+          <td *ngIf="pendingSpace.status == 'Pending'">
+            <span class="badge text-bg-warning">{{ 'Pendiente' }}</span>
           </td>
           <td *ngIf="!pendingSpace.status">
             <span class="badge text-bg-danger">No completado</span>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <i (click)="editSpace(pendingSpace.id)" class="bi bi-pencil-square fs-5 pointer"></i>
+              <i (click)="deleteSpace(pendingSpace.id)" class="bi bi-trash3-fill fs-5 me-2 mx-2 pointer"></i>
+              <span (click)="validateSpace(pendingSpace)" class="badge text-bg-success pointer" *ngIf="pendingSpace.status">Validar</span>
+            </div>
           </td>
         </tr>
       </tbody>

@@ -10,32 +10,22 @@
 
         <div class="p-4 border-0 shadow rounded-3 mt-3 me-4">
           <p class="text-muted">
-            <span class="text-dark h2">Nombre del alojamiento</span>
+            <span class="text-dark h2">{{ this.space?.name }}</span>
           </p>
 
           <hr class="my-4">
 
           <div class="mb-3">
-            <label class="form-label">Llegada / Salida</label>
-            <input class="form-control" type="text" name="bookingDate" id="bookingDate"
-              placeholder="Selecciona las fechas">
-          </div>
-
-          <div class="mb-4">
-            <label class="form-label">Huéspedes</label>
-            <select class="form-control" name="guests" id="guests">
-              <option value="1">1 Huésped</option>
-              <option value="2">2 Huéspedes</option>
-              <option value="3">3 Huéspedes</option>
-              <option value="4">4 Huéspedes</option>
-            </select>
+            <label class="form-label">Días de reserva</label>
+            <input readonly class="form-control" type="text" name="bookingDate" id="bookingDate"
+              placeholder="Selecciona las fechas" [ngModel]="this.bookingDates">
           </div>
 
           <div>
-            <p class="text-muted text-sm ms-1 mb-0">60€ x 5 días = 300€</p>
-            <p class="text-muted text-sm ms-1 mb-0">2% comisión de servicio = 6€</p>
+            <p class="text-muted text-sm ms-1 mb-0">{{ this.space?.price }} € x {{ getBookingDays() }} días = {{ this.booking.bookingPrice | number:'1.2-2' }} €</p>
+            <p class="text-muted text-sm ms-1 mb-0">Comisión de servicio ({{ this.booking.serviceFee }}%): {{ this.booking.serviceFeePrice | number:'1.2-2' }} €</p>
             <hr class="my-2">
-            <p class="text-muted text-sm ms-1">Total: 306€</p>
+            <p class="text-muted text-sm ms-1"><strong>Total a pagar: {{ this.booking.totalPrice | number:'1.2-2' }}€</strong></p>
           </div>
 
         </div>
@@ -43,12 +33,15 @@
       </div>
 
       <div class="col-lg-7 mt-2 order-lg-2 order-1">
-        <h1 class="display-5">Confirma y paga tu reserva</h1>
-        <div class="d-flex justify-content-between align-items-end mb-4">
-          <h5 class="mb-0">Paga con tu tarjeta</h5>
-          <div class="text-muted">
-            <i class="fab fa-cc-mastercard fa-2x me-2"> </i>
-            <i class="fab fa-cc-visa fa-2x"></i>
+
+        <div class="d-flex justify-content-between mb-3">
+          <div>
+            <h1 class="display-5 mb-4">Confirma y paga tu reserva</h1>
+          </div>
+          <div class="ms-auto text-end">
+            <a (click)="cancelBooking()" class="text-decoration-none text-dark pointer">
+              <i class="bi bi-x-lg fs-1"></i>
+            </a>
           </div>
         </div>
 

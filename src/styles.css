@@ -6,3 +6,7 @@
 .dropdown-item:hover {
   cursor: pointer;
 }
+
+.pointer {
+  cursor: pointer;
+}

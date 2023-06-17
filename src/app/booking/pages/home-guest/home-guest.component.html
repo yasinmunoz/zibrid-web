@@ -22,24 +22,17 @@
 
 <section class="container mt-4">
   <div class="d-flex justify-content-between">
-
-    <input class="form-control" list="regions" name="browser" id="browser"
-      placeholder="¿Desde dónde quieres teletrabajar?">
-    <datalist id="regions">
-      <option value="Castilla-La Mancha">Castilla-La Mancha</option>
-      <option value="Madrid">Madrid</option>
-      <option value="Andalucía">Andalucía</option>
-      <option value="Asturias">Asturias</option>
-      <option value="Cataluña">Cataluña</option>
-      <option value="Galicia">Galicia</option>
+    <input class="form-control" list="datalistLocations" id="locations"
+      placeholder="¿Desde dónde quieres teletrabajar?" #inputLocation>
+    <datalist id="datalistLocations">
+      <option *ngFor="let location of locations" [value]="location">{{ location }}</option>
     </datalist>
-
-    <a (click)="findSpaces()" class="btn btn-dark ms-2">
+    <a (click)="findSpaces(inputLocation.value)" class="btn btn-dark ms-2">
       Buscar
     </a>
-
   </div>
 </section>
+
 
 <section class="mt-5 py-6 bg-light">
 
@@ -78,7 +71,7 @@
           <div class="mb-3">
             <img src="./../../../../assets/icons/woman_working.svg" width="100px">
           </div>
-          <h3 class="h5">Teletraba con comodidad</h3>
+          <h3 class="h5">Teletrabaja con comodidad</h3>
           <p class="text-muted">Da lo mejor de ti en tu trabajo al alquilar espacios equipados para el teletrabajo</p>
         </div>
       </div>
@@ -148,14 +141,14 @@
 
     <div class="row justify-content-center">
 
-      <div class="col-md-6">        
+      <div class="col-md-6">
         <div class="text-center mb-3">
           <h1 class="display-6">Zonas de costa</h1>
           <img class="bg-image" src="./../../../../assets/img/coast-home-guest.jpg" width="500" alt="Costa">
         </div>
       </div>
 
-      <div class="col-md-6">        
+      <div class="col-md-6">
         <div class="text-center mb-3">
           <h1 class="display-6">Zonas rurales</h1>
           <img class="bg-image" src="./../../../../assets/img/rural.png" width="500" alt="Rural">

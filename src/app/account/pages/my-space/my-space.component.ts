@@ -14,20 +14,18 @@ import * as mapboxgl from 'mapbox-gl';
   templateUrl: './my-space.component.html',
   styleUrls: ['./my-space.component.css']
 })
-export class MySpaceComponent implements OnInit, AfterViewInit {
+export class MySpaceComponent implements OnInit {
 
   id?: any;
   mySpace: any;
 
-  longitud: any;
-  latitud: any;
+  coordinates: any;
 
   amenities: any;
   images: any[] = [];
   imageUrls: string[] = []; // Array de URLs generadas para las imágenes
 
   constructor(
-    private _jwtHelperSvc: JwtHelperService,
     private _accountSvc: AccountService,
     private _activatedRoute: ActivatedRoute,
     private _errorSvc: ErrorService,
@@ -39,16 +37,6 @@ export class MySpaceComponent implements OnInit, AfterViewInit {
     this.inicializate();
   }
 
-  async ngAfterViewInit(): Promise<void> {
-
-    const map = new mapboxgl.Map({
-      container: 'map', // container ID
-      style: 'mapbox://styles/mapbox/outdoors-v12', // style URL
-      center: [-1.861535, 39.002574], // starting position [lng, lat]
-      zoom: 14, // starting zoom
-    });
-  }
-
   async inicializate() {
 
     this._accountSvc.getPropertyById(this.id).subscribe({
@@ -58,35 +46,47 @@ export class MySpaceComponent implements OnInit, AfterViewInit {
         console.log(this.mySpace);
         console.log(this.amenities);
         this.setData();
-        console.log(this.imageUrls);
-        this.getCoordinates();
+        console.log(this.imageUrls); 
+        this.setMap();
       },
       error: (e: HttpErrorResponse) => {
         this._errorSvc.msgError(e);
       }
     });
-
   }
 
-  getCoordinates() {
+
+  setMap() {
     const address = this.mySpace.address;
     const city = this.mySpace.city;
+    const province = this.mySpace.province;
+    const state = this.mySpace.state;
     const country = this.mySpace.country;
+    const zip = this.mySpace.zip;
 
-    this._accountSvc.searchWord(`${address}, ${city}, ${country}`).subscribe({
+    console.log(address, city, province, state, country, zip);
+
+    this._accountSvc.searchWord(`${address}, ${city}, ${province}, ${state}, ${country}, ${zip}`).subscribe({
       next: async (v) => {
-        console.log(v);
+        this.coordinates = v[0].center;
+                
+        const map = new mapboxgl.Map({
+          container: 'map', // container ID
+          style: 'mapbox://styles/mapbox/outdoors-v12', // style URL
+          center: this.coordinates, // starting position [lng, lat]
+          zoom: 14, // starting zoom
+        });
       },
       error: (e: HttpErrorResponse) => {
         this._errorSvc.msgError(e);
       }
     });
-  }
+    
 
+  }
 
   // Preparo los datos que voy a mostrar salvo la imageBlobURL
   setData() {
-
     console.log(this.mySpace.images);
     if (this.mySpace.images.length > 0) {
       for (let i = 0; i < this.mySpace.images.length; i++) {
@@ -94,8 +94,6 @@ export class MySpaceComponent implements OnInit, AfterViewInit {
         this.getPropertyImageUrl(image.uuidImage);
       }
     }
-
-
   }
 
 
@@ -112,5 +110,21 @@ export class MySpaceComponent implements OnInit, AfterViewInit {
   }
 
 
+  editSpace(propertyId: number) {
+    console.log(propertyId);
+    this._router.navigate(['listing/place-space/', propertyId]);
+  }
 
+
+  deleteSpace(pendingSpaceId: number) {
+
+    this._accountSvc.deleteProperty(pendingSpaceId).subscribe({
+      next: (v) => {
+        this._router.navigate(['account/my-spaces']);
+      },
+      error: (e: HttpErrorResponse) => {
+        this._errorSvc.msgError(e);
+      }
+    })
+  }
 }

@@ -50,7 +50,7 @@ export class SigninComponent {
       next: (token) => {
         localStorage.setItem('token', token);
 
-        if (this.previousUrl == 'show-apartment') {
+        if (this.previousUrl == 'show-space') {
           this._router.navigate(['/booking/confirm-booking']);
         }
         else {
@@ -65,8 +65,8 @@ export class SigninComponent {
   }
 
   continueWithGoogle() {
-    if (history.state.data == 'show-apartment') {
-      this._router.navigate(['/google-auth/signin'], { state: { data: 'show-apartment' } });
+    if (history.state.data == 'show-space') {
+      this._router.navigate(['/google-auth/signin'], { state: { data: 'show-space' } });
     }
     else {
       this._router.navigate(['/google-auth/signin']);

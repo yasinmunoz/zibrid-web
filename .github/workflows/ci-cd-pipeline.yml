@@ -1,4 +1,4 @@
-name: zibrid-web ci-cd pipeline
+name: Push-to-Amazon-S3
 
 on:
   push:

@@ -10,6 +10,9 @@ import { MySpacesComponent } from './pages/my-spaces/my-spaces.component';
 import { MyBookingsComponent } from './pages/my-bookings/my-bookings.component';
 import { PendingSpacesComponent } from './pages/pending-spaces/pending-spaces.component';
 import { MySpaceComponent } from './pages/my-space/my-space.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { FormsModule } from '@angular/forms';
+import { PendingSpaceComponent } from './pages/pending-space/pending-space.component';
 
 
 @NgModule({
@@ -20,12 +23,15 @@ import { MySpaceComponent } from './pages/my-space/my-space.component';
     MySpacesComponent,
     MyBookingsComponent,
     PendingSpacesComponent,
-    MySpaceComponent
+    MySpaceComponent,
+    PendingSpaceComponent
   ],
   imports: [
     AccountRoutingModule,
     CommonModule,    
     SharedModule,
+    FormsModule,
+    CarouselModule.forRoot()
   ]
 })
 export class AccountModule { }

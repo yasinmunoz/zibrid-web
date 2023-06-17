@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BookingService } from '../../services/booking.service';
 import { ErrorService } from 'src/app/auth/services/error.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home-guest',
@@ -11,6 +12,8 @@ import { ErrorService } from 'src/app/auth/services/error.service';
 })
 export class HomeGuestComponent {
 
+  locations: any[] = [];
+
   constructor(
     private _router: Router,
     private _jwtHelperSvc: JwtHelperService,
@@ -18,8 +21,25 @@ export class HomeGuestComponent {
     private _errorSvc: ErrorService
   ) { }
 
+  ngOnInit(): void {
 
-  findSpaces() {
-    this._router.navigate(['/booking/show-apartments']);
+    this.inicializate();
+  }
+
+  async inicializate() {
+
+    this._bookingSvc.getPropertyLocations().subscribe({
+      next: async (v) => {
+        this.locations = v.data;
+      },
+      error: (e: HttpErrorResponse) => {
+        this._errorSvc.msgError(e);
+      }
+    });
+  }
+
+  findSpaces(location:string) {
+
+    this._router.navigate(['/booking/show-spaces', location]);
   }
 }
