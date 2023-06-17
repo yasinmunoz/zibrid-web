@@ -45,7 +45,7 @@ export class GoogleAuthService {
   userProfileSubject = new Subject<UserInfo>();
 
   //serverURL = 'http://localhost:3000/';
-  serverURL = 'ec2-3-69-12-0.eu-central-1.compute.amazonaws.com:3000/';
+  serverURL = 'https://d35fn2in49b4xm.cloudfront.net/';
   apiURL = 'api/users'
 
   constructor(
