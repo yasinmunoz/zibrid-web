@@ -16,8 +16,8 @@ export class AuthService {
   constructor(
     private _http: HttpClient
   ) {
-    this.serverURL = 'http://localhost:3000/';
-    //this.serverURL = 'ec2-3-69-12-0.eu-central-1.compute.amazonaws.com:3000/';
+    //this.serverURL = 'http://localhost:3000/';
+    this.serverURL = 'https://d35fn2in49b4xm.cloudfront.net/';
     this.apiURL = 'api/users';
   }
 

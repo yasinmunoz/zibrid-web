@@ -8,8 +8,8 @@ import { environment } from 'src/environments/environment';
 })
 export class AccountService {
 
-  private REST_API_URL: string = 'http://localhost:3000/';
-  //private REST_API_URL: string = 'ec2-3-69-12-0.eu-central-1.compute.amazonaws.com:3000/';
+  //private REST_API_URL: string = 'http://localhost:3000/';
+  private REST_API_URL: string = 'https://d35fn2in49b4xm.cloudfront.net/';
 
   private USERS_URL = 'api/users/';
   private PROPERTIES_URL = 'api/properties/'
