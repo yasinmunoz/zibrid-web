@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class BookingService {
 
   //private REST_API_URL: string = 'http://localhost:3000/';
-  private REST_API_URL: string = 'http://3.69.12.0:3000/';
+  private REST_API_URL: string = '3.69.12.0:3000/';
 
   private USERS_URL = 'api/users/';
   private PROPERTIES_URL = 'api/properties/'
