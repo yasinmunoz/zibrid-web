@@ -29,7 +29,7 @@ export class ListingService {
     const token = localStorage.getItem("token");
     const headers = new HttpHeaders().set('authorization', `Bearer ${token}`);
 
-    return this._http.post(`${this.REST_API_URL}${this.PROPERTIES_URL}new`, propertyPlace, { headers });
+    return this._http.post(`${this.REST_API_URL}${this.PROPERTIES_URL}`, propertyPlace, { headers });
   }
 
   editProperty(propertyId: number, propertyPlace: any): Observable<any> {

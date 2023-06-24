@@ -31,14 +31,4 @@ export class AuthService {
     return this._http.post<string>(`${this.serverURL}${this.apiURL}/signin`, user);
   }
 
-  signupLandLord(landLordUser: Landlord): Observable<any> {
-
-    return this._http.post(`${this.serverURL}${this.apiURL}`, landLordUser);
-  }
-
-  signinLandLord(landLordUser: Landlord): Observable<string> {
-
-    return this._http.post<string>(`${this.serverURL}${this.apiURL}/signin`, landLordUser);
-  }
-
 }

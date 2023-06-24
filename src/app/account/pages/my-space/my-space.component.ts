@@ -69,6 +69,7 @@ export class MySpaceComponent implements OnInit {
     this._accountSvc.searchWord(`${address}, ${city}, ${province}, ${state}, ${country}, ${zip}`).subscribe({
       next: async (v) => {
         this.coordinates = v[0].center;
+        console.log(v)
                 
         const map = new mapboxgl.Map({
           container: 'map', // container ID

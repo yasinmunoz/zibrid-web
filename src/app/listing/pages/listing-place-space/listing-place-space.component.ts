@@ -96,24 +96,14 @@ export class ListingPlaceSpaceComponent implements OnInit, OnDestroy {
       province: this.province,
       state: this.state,
       zip: this.zip
-    };    
+    };
 
     if (!this.edit) {
-      
+
       this._listingSvc.createProperty(property).subscribe({
         next: (v) => {
-          if (v.token) {
-            localStorage.setItem('token', v.token);
-            const token = localStorage.getItem("token");
-            console.log(token);
-            if (token) {
-              this.user = this._jwtHelperSvc.decodeToken(token);
-              const landlordProperties = this.user.landlordProperties;
-
-              this.propertyId = this.user.landlordProperties[landlordProperties.length - 1];
-            }
-          }
-          this._router.navigate(['/listing/describe-space/', this.propertyId]);
+          console.log(v.data);
+          this._router.navigate(['/listing/describe-space/', v.data.id]);
         },
         error: (e: HttpErrorResponse) => {
           this._errorSvc.msgError(e);

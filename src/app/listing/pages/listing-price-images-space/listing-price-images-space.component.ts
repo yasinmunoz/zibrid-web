@@ -85,14 +85,10 @@ export class ListingPriceImagesSpaceComponent implements OnInit {
   }
 
   nextPage() {
-    const landlordProperties = this.user.landlordProperties;
-
-    const propertyId = this.user.landlordProperties[landlordProperties.length - 1];
-
     const formData = new FormData();
     for (let file of this.files) {
       formData.append('images', file);
-      formData.set('propertyId', propertyId);
+      formData.set('propertyId', this.propertyId);
       formData.set('price', this.mySpace.price.toString());
     }
 
