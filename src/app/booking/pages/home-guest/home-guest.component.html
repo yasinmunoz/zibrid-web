@@ -21,11 +21,16 @@
 
 <section class="container mt-4">
   <div class="d-flex justify-content-between">
-    <input class="form-control" list="datalistLocations" id="locations"
-      placeholder="¿Desde dónde quieres teletrabajar?" #inputLocation>
-    <datalist id="datalistLocations">
-      <option *ngFor="let location of locations" [value]="location">{{ location }}</option>
-    </datalist>
+    <label for="typeahead-format"></label>
+    <input
+  	  id="typeahead-format"
+	    type="text"
+	    class="form-control"
+	    [(ngModel)]="model"
+	    [ngbTypeahead]="search"
+	    [resultFormatter]="formatter"
+      #inputLocation
+    />
     <a (click)="findSpaces(inputLocation.value)" class="btn btn-dark ms-2">
       Buscar
     </a>
