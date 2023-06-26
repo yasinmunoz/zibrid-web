@@ -24,7 +24,10 @@ jobs:
       with:
         node-version: 16
 
-    - name: Install dependencies
+    - name: Install dependencies 1
+      run: npm config set legacy-peer-deps true
+
+    - name: Install dependencies 2
       run: npm install
 
     - name: Build
