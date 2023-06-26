@@ -16,7 +16,6 @@ defineLocale('es', esLocale);
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { FormsModule } from '@angular/forms';
-import { BootstrapAutocompleteModule } from 'angular-bootstrap-autocomplete';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -26,8 +25,7 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
     ShowSpaceComponent,
     ConfirmBookingComponent,
   ],
-  imports: [
-    BootstrapAutocompleteModule,
+  imports: [    
     BookingRoutingModule,
     NgbTypeaheadModule,
     CommonModule,
