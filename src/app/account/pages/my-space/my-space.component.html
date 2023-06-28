@@ -72,18 +72,18 @@
   <h5 class="text-muted mb-4">{{ this.mySpace?.type }}</h5>
 
   <ul class="list-inline text-sm">
-    <li class="list-inline-item me-3">
+    <li class="list-inline-item me-3" *ngIf="this.mySpace?.type != 'Coworking'">
       <i class="fa fa-door-open me-1"></i> {{ this.mySpace?.bedrooms }} habitaciones
     </li>
-    <li class="list-inline-item me-3">
+    <li class="list-inline-item me-3" *ngIf="this.mySpace?.type != 'Coworking'">
       <i class="fa fa-bed me-1"></i> {{ this.mySpace?.beds }} camas
     </li>
-    <li class="list-inline-item me-3">
+    <li class="list-inline-item me-3" *ngIf="this.mySpace?.type != 'Coworking'">
       <i class="fa fa-bath me-1"></i> {{ this.mySpace?.bathrooms }} baños
     </li>
     <li class="list-inline-item me-3">
-      <img [src]="'./../../../../assets/icons/office_desk.svg'" width="16px"> {{ this.mySpace?.workspaces }} Estaciones
-      de trabajo
+      <img [src]="'./../../../../assets/icons/office_desk.svg'" width="16px"> {{ this.mySpace?.workspaces }}
+      Estaciones de trabajo
     </li>
   </ul>
 
