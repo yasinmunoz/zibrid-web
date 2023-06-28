@@ -103,16 +103,16 @@
 
       </div>
 
-      <h5 class="mt-4">RESTO DE COMODIDADES</h5>
-      <div class="row">
+      <h5 class="mt-4" *ngIf="this.space?.type != 'Coworking'">RESTO DE COMODIDADES</h5>
+      <div class="row" *ngIf="this.space?.type != 'Coworking'">
 
         <div class="col-md-3">
           <div class="card h-100 text-center">
             <div class="card-body">
               <div class="text-primary mb-3 mx-auto">
-                <img src="./../../../../assets/icons/ergonomicChair.png" width="32px">
+                <img src="./../../../../assets/icons/kitchen.svg" width="45px">
               </div>
-              <p class="text-dark mb-0">Silla Ergonómica</p>
+              <p class="text-dark mb-0">Cocina equipada</p>
             </div>
           </div>
         </div>
@@ -121,31 +121,9 @@
           <div class="card h-100 text-center">
             <div class="card-body">
               <div class="text-primary mb-4 mx-auto">
-                <img src="./../../../../assets/icons/highSpeedInternet.png" width="32px">
+                <img src="./../../../../assets/icons/parking.svg" width="45px">
               </div>
-              <p class="text-dark mb-0">Wifi velocidad hasta 300MB</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="card h-100 text-center">
-            <div class="card-body">
-              <div class="text-primary mb-3 mx-auto">
-                <img src="./../../../../assets/icons/laptop-stand.png" width="32px">
-              </div>
-              <p class="text-dark mb-0">Soporte para portátil</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="card h-100 text-center">
-            <div class="card-body">
-              <div class="text-primary mb-3 mx-auto">
-                <img src="./../../../../assets/icons/laptop-stand.png" width="32px">
-              </div>
-              <p class="text-dark mb-0">Soporte para portátil</p>
+              <p class="text-dark mb-0">Aparcamento</p>
             </div>
           </div>
         </div>

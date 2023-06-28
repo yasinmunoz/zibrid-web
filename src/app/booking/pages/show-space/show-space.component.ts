@@ -70,6 +70,8 @@ export class ShowSpaceComponent implements OnInit {
       next: async (v) => {
         this.coordinates = v[0].center;
 
+        console.log(v, 'hola');
+
         const map = new mapboxgl.Map({
           container: 'map', // container ID
           style: 'mapbox://styles/mapbox/outdoors-v12', // style URL
