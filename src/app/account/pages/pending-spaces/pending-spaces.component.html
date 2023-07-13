@@ -14,8 +14,8 @@
     </ol>
 
     <h1 class="display-5 mb-4">Espacios pendientes de ser publicados</h1>
-    <h6 class="text-center" *ngIf="this.pendingSpaces.length == 0">No existen espacios pendientes</h6>
-    <table class="table" *ngIf="this.pendingSpaces.length != 0">
+    <h6 class="text-center" *ngIf="this.pendingSpaces?.length == 0">No existen espacios pendientes</h6>
+    <table class="table" *ngIf="this.pendingSpaces?.length != 0">
       <thead>
         <tr>
           <th scope="col">Id</th>
@@ -30,12 +30,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let pendingSpace of pendingSpaces">
-          <th scope="row">{{ pendingSpace.id }}</th>
-          <td>{{ pendingSpace.name }}</td>
-          <td>{{ pendingSpace.address }}</td>
-          <td>{{ pendingSpace.city }}</td>
-          <td>{{ pendingSpace.user.name }} {{ pendingSpace.user.lastName }}</td>
-          <td>15975382</td>
+          <th scope="row">{{ pendingSpace?.id }}</th>
+          <td>{{ pendingSpace?.name }}</td>
+          <td>{{ pendingSpace?.address }}</td>
+          <td>{{ pendingSpace?.city }}</td>
+          <td>{{ pendingSpace?.user.name }} {{ pendingSpace?.user.lastName }}</td>
+          <td>{{ pendingSpace?.user.phone }}</td>
           <td *ngIf="pendingSpace.status == 'Pending'">
             <span class="badge text-bg-warning">{{ 'Pendiente' }}</span>
           </td>

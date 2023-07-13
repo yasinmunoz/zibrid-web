@@ -19,6 +19,8 @@ export class ListingAmenitiesSpaceComponent implements OnInit, OnDestroy {
 
   mySpace: any;
   allAmenities: any;
+  lifeAmenities: any [] = [];
+  workAmenities: any [] = [];
   amenitiesProperty: any[] = [];
 
   amenitiesPropertyNames: any[] = [];
@@ -40,6 +42,8 @@ export class ListingAmenitiesSpaceComponent implements OnInit, OnDestroy {
 
     this.inicializate();
 
+    //this.setAmenities();
+
     window.addEventListener('beforeunload', this.onWindowClose);
   }
 
@@ -49,8 +53,20 @@ export class ListingAmenitiesSpaceComponent implements OnInit, OnDestroy {
 
     this._listingSvc.getAllAmenities().subscribe({
       next: (v) => {
+        
         this.allAmenities = v.data.allAmenities;
-        //console.log(this.allAmenities);
+        console.log(this.allAmenities);        
+
+        for (var i = 0; i < this.allAmenities.length; i++) {
+          var amenity = this.allAmenities[i];
+          if (amenity.type === 'life') {
+            this.lifeAmenities.push(amenity);
+          } else if (amenity.type === 'work') {
+            this.workAmenities.push(amenity);
+          }
+        }
+        //console.log(this.lifeAmenities);
+        //console.log(this.workAmenities);
       },
       error: (e: HttpErrorResponse) => {
         this._errorSvc.msgError(e);
@@ -91,7 +107,7 @@ export class ListingAmenitiesSpaceComponent implements OnInit, OnDestroy {
 
     this.mySpace.amenities = this.amenitiesProperty;
   }
-  
+
   nextPage() {
 
     if (this.mySpace.amenities.length === 0) {

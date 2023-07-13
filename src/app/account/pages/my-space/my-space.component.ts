@@ -113,7 +113,7 @@ export class MySpaceComponent implements OnInit {
 
   editSpace(propertyId: number) {
     console.log(propertyId);
-    this._router.navigate(['listing/place-space/', propertyId]);
+    this._router.navigate(['account/edit-my-space/', propertyId]);
   }
 
 

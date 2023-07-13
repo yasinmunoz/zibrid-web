@@ -42,7 +42,7 @@ export class PendingSpacesComponent implements OnInit {
 
   editSpace(pendingSpaceId: number) {
     console.log(pendingSpaceId);
-    this._router.navigate(['listing/place-space/', pendingSpaceId]);
+    this._router.navigate(['account/edit-my-space', pendingSpaceId], { state: { data: 'edit-pending-space' } });    
   }
 
   deleteSpace(pendingSpaceId: number) {

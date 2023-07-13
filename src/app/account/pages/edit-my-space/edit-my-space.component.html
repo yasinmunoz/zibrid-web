@@ -1,0 +1,184 @@
+<app-navbar></app-navbar>
+
+<!-- Modal -->
+<div class="modal fade" id="viewAllModal" tabindex="-1" aria-labelledby="viewAllModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewAllModalLabel">Fotos del {{ this.mySpace?.type }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="allPhotosCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let imageURL of imageUrls; let i = index" [class.active]="i === 0">
+              <img [src]="imageURL" class="d-block w-100" alt="Property Photo 1">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#allPhotosCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#allPhotosCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="py-5">
+  <div class="container" *ngIf="mySpace">
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a class="text-decoration-none text-dark" routerLink="/">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a class="text-decoration-none text-dark" routerLink="/account">Cuenta</a>
+      </li>
+      <li class="breadcrumb-item" *ngIf="this?.editMySpace == 'edit-pending-space'">
+        <a class="text-decoration-none text-dark" routerLink="/account/pending-spaces">Espacios Pendientes</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Editar espacio</li>
+    </ol>
+
+    <h1 class="mb-4">Editar espacio</h1>
+
+    <h2>Localización del espacio</h2>
+    
+    <div class="row mt-4">
+      <div class="form-group col-md-12 mb-3">
+        <label>Nombre de la propiedad</label>
+        <input type="email" class="form-control" id="inputName" [(ngModel)]="mySpace.name">
+      </div>
+
+      <div class="form-group col-md-6 mb-3">
+        <label>Tipo de espacio</label>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="mySpace.type">
+          <option value="Apartamento">Apartamento</option>
+          <option value="Casa">Casa</option>
+          <option value="Coworking">Coworking</option>
+          <option value="Coliving">Coliving</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6 mb-3">
+        <label>País</label>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="mySpace.country">
+          <option value="Spain">España</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label>Dirección</label>
+        <input type="text" class="form-control" id="inputAddress" [(ngModel)]="mySpace.address">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label>Dirección Complementaria</label>
+        <input type="text" class="form-control" id="inputComplementaryAddress"
+          [(ngModel)]="mySpace.complementaryAddress">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label>Localidad</label>
+        <input type="text" class="form-control" id="inputCity" [(ngModel)]="mySpace.city">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label>Provincia</label>
+        <input type="text" class="form-control" id="inputProvince" [(ngModel)]="mySpace.province">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label>Comunidad Autónoma</label>
+        <input type="text" class="form-control" id="inputProvince" [(ngModel)]="mySpace.state">
+      </div>
+      <div class="form-group col-md-4 mb-3">
+        <label>Código Postal</label>
+        <input type="text" class="form-control" id="inputZip" [(ngModel)]="mySpace.zip">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container mt-2" *ngIf="mySpace">
+    <h2>Características del espacio</h2>
+
+    <div class="mt-4">
+      <div class="row">
+        <div class="col-lg-3 col-md-6" *ngIf="mySpace.type != 'Coworking'">
+          <label class="form-label">Camas</label>
+          <div class="d-flex">
+            <div class="btn btn-items bg-dark" (click)="decreaseBeds()">-</div>
+            <input class="form-control input-spaces" disabled [(ngModel)]="mySpace.beds">
+            <div class="btn btn-items bg-dark" (click)="increaseBeds()">+</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6" *ngIf="mySpace.type != 'Coworking'">
+          <label class="form-label">Habitaciones</label>
+          <div class="d-flex">
+            <div class="btn btn-items bg-dark" (click)="decreaseBedrooms()">-</div>
+            <input class="form-control input-spaces" disabled [(ngModel)]="mySpace.bedrooms">
+            <div class="btn btn-items bg-dark" (click)="increaseBedrooms()">+</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6" *ngIf="mySpace.type != 'Coworking'">
+          <label class="form-label">Baños</label>
+          <div class="d-flex">
+            <div class="btn btn-items bg-dark" (click)="decreaseBathrooms()">-</div>
+            <input class="form-control input-spaces" disabled [(ngModel)]="mySpace.bathrooms">
+            <div class="btn btn-items bg-dark" (click)="increaseBathrooms()">+</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <label class="form-label">Escritorios para el teletrabajo</label>
+          <div class="d-flex">
+            <div class="btn btn-items bg-dark" (click)="decreaseWorkspaces()">-</div>
+            <input class="form-control input-spaces" disabled [(ngModel)]="mySpace.workspaces">
+            <div class="btn btn-items bg-dark" (click)="increaseWorkspaces()">+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="form-group col-md-12 mb-3">
+        <label>Descripción del espacio</label>
+        <textarea class="form-control" id="spaceDescriptionInput" rows="6"
+          [(ngModel)]="mySpace.spaceDescription"></textarea>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label>Descripción de la zona donde se encuentra el espacio</label>
+        <textarea class="form-control" id="spacePlaceDescriptionInput" rows="6"
+          [(ngModel)]="mySpace.spacePlaceDescription"></textarea>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container mb-4 mt-4" *ngIf="this.allAmenities">
+    <h2 class="mb-3">Comodidades del espacio</h2>
+
+    <div class="form-check" *ngFor="let amenity of allAmenities">
+      <input class="form-check-input" type="checkbox" [id]="amenity.name"
+        [checked]="this.amenitiesPropertyNames.includes(amenity.name)"
+        (change)="toggleAmenitySelection(amenity, $event)">
+      <label class="form-check-label">{{ amenity.description }}</label>
+    </div>
+    
+    <h2 class="mt-3">Imágenes del espacio</h2>
+
+    <button type="button" class="btn btn-secondary mt-3 me-2" data-bs-toggle="modal" data-bs-target="#viewAllModal">
+      Ver fotos del espacio
+    </button>
+
+    <div class="d-flex justify-content-between mt-5">
+      <button class="btn btn-secondary" (click)="back()">Atrás</button>
+      <button class="btn btn-dark" (click)="editSpace()">Editar espacio</button>
+    </div>
+    
+  </div>
+
+</section>
+
+
+<app-footer></app-footer>

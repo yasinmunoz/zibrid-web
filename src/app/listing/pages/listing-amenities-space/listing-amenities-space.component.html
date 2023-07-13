@@ -5,19 +5,30 @@
     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
-<div class="container mt-4 mb-5" *ngIf="this.allAmenities">
-  <h1 class="mb-5">Selecciona sus comodidades</h1>  
+<div class="container mt-4 mb-5" *ngIf="allAmenities">
+  <h1 class="mb-5">Selecciona tus comodidades</h1>
 
-  <div class="form-check" *ngFor="let amenity of allAmenities">
-    <input class="form-check-input" type="checkbox" [id]="amenity.name" [checked]="this.amenitiesPropertyNames.includes(amenity.name)" (change)="toggleAmenitySelection(amenity, $event)">
-    <label class="form-check-label">{{ amenity.description }}</label>
+  <div class="row">
+    <div class="col-sm-6 col-12 mb-3">
+      <h3>Comodidades para el teletrabajo</h3>
+      <div class="form-check" *ngFor="let amenity of workAmenities">      
+          <input class="form-check-input" type="checkbox" [id]="amenity.name" [checked]="amenitiesPropertyNames.includes(amenity.name)" (change)="toggleAmenitySelection(amenity, $event)">
+          <label class="form-check-label">{{ amenity.description }}</label>        
+      </div>
+    </div>
+    <div class="col-sm-6 col-12 ">
+      <h3>Resto de comodidades</h3>
+      <div class="form-check" *ngFor="let amenity of lifeAmenities">        
+          <input class="form-check-input" type="checkbox" [id]="amenity.name" [checked]="amenitiesPropertyNames.includes(amenity.name)" (change)="toggleAmenitySelection(amenity, $event)">
+          <label class="form-check-label">{{ amenity.description }}</label>        
+      </div>
+    </div>
   </div>
 
   <div class="d-flex justify-content-between mt-3">
     <button class="btn btn-secondary" (click)="back()">Atrás</button>
     <button class="btn btn-dark" (click)="nextPage()">Siguiente</button>
   </div>
-
 </div>
 
 <app-footer></app-footer>

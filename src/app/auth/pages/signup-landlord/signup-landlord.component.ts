@@ -31,7 +31,7 @@ export class SignupLandlordComponent {
 
   addUser() {
 
-    if (this.email == '' || this.password == '' || this.confirmPassword == '') {
+    if (this.email == '' || this.password == '' || this.confirmPassword == '' || this.phone == '') {
       this._toastrSvc.error('Todos los campos son obligatorios', 'Error');
       return;
     }

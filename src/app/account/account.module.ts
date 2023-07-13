@@ -5,22 +5,20 @@ import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './pages/account/account.component';
 import { SharedModule } from '../shared/shared.module';
 import { MySpacesComponent } from './pages/my-spaces/my-spaces.component';
-import { MyBookingsComponent } from './pages/my-bookings/my-bookings.component';
 import { PendingSpacesComponent } from './pages/pending-spaces/pending-spaces.component';
 import { MySpaceComponent } from './pages/my-space/my-space.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { FormsModule } from '@angular/forms';
-import { PendingSpaceComponent } from './pages/pending-space/pending-space.component';
+import { EditMySpaceComponent } from './pages/edit-my-space/edit-my-space.component';
 
 
 @NgModule({
   declarations: [
     AccountComponent,
-    MySpacesComponent,
-    MyBookingsComponent,
+    MySpacesComponent,    
     PendingSpacesComponent,
     MySpaceComponent,
-    PendingSpaceComponent
+    EditMySpaceComponent
   ],
   imports: [
     AccountRoutingModule,

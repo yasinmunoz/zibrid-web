@@ -15,33 +15,6 @@
 
     <div class="row">
 
-      <!-- Para todos -->
-      <!-- <div class="col-12 col-md-4 mb-4">
-        <div class="card h-100 border-0 rounded-3 shadow">
-          <div class="card-body">
-            <div class="mb-3">
-              <img src="./../../../assets/img/login.png" alt="Información Personal" width="100px">
-            </div>
-            <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link"
-                routerLink="profile">Perfil</a></h5>
-            <p class="text-muted card-text text-sm">Accede a tu perfil</p>
-          </div>
-        </div>
-      </div> -->
-
-      <!--<div class="col-12 col-md-4 mb-4">
-        <div class="card h-100 border-0 rounded-3 shadow">
-          <div class="card-body">
-            <div class="mb-3">
-              <img src="./../../../assets/img/personal-information.png" alt="Información Personal" width="100px">
-            </div>
-            <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link"
-                routerLink="//personal-info">Información Personal</a></h5>
-            <p class="text-muted card-text text-sm">Consulta y edita tus datos personales</p>
-          </div>
-        </div>
-      </div>-->
-
       <!-- Para los propietarios -->
       <div class="col-12 col-md-4 mb-4" *ngIf="this.userToken?.roles?.includes(2)">
         <div class="card h-100 border-0 rounded-3 shadow">
@@ -78,8 +51,8 @@
               <img src="./../../../assets/img/reservas.png" alt="Mis reservas" width="100px">
             </div>
             <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link"
-                routerLink="my-bookings">Mis reservas</a></h5>
-            <p class="text-muted card-text text-sm">Consulta tus espacios alquilados</p>
+                routerLink="/booking">Reserva un espacio</a></h5>
+            <p class="text-muted card-text text-sm">Busca un espacio preparado para el teletrabajo</p>
           </div>
         </div>
       </div>
