@@ -12,7 +12,8 @@ export class BookingService {
   private REST_API_URL: string = 'https://d35fn2in49b4xm.cloudfront.net/';
 
   private USERS_URL = 'api/users/';
-  private PROPERTIES_URL = 'api/properties/'
+  private PROPERTIES_URL = 'api/properties/';
+  private BOOKINGS_URL = 'api/bookings'
 
   constructor(
     private _http: HttpClient
@@ -64,5 +65,10 @@ export class BookingService {
   getPropertyById(propertyId: number): Observable<any> {
 
     return this._http.get(`${this.REST_API_URL}${this.PROPERTIES_URL}` + propertyId);
+  }
+
+  createBooking(booking: any): Observable<any> {
+
+    return this._http.post(`${this.REST_API_URL}${this.BOOKINGS_URL}`, booking);
   }
 }
