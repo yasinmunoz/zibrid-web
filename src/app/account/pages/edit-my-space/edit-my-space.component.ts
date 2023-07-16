@@ -157,8 +157,10 @@ export class EditMySpaceComponent implements OnInit {
       next: (v) => {
         console.log(v);
         if (this.editMySpace == 'edit-pending-space') {
-          this._router.navigate(['/account/pending-spaces',]);
-        }        
+          this._router.navigate(['/account/pending-spaces']);
+        } else {
+          this._router.navigate(['/account/my-spaces'])
+        }   
       },
       error: (e: HttpErrorResponse) => {
         this._errorSvc.msgError(e);

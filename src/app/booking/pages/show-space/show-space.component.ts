@@ -5,6 +5,7 @@ import { ErrorService } from 'src/app/auth/services/error.service';
 import * as mapboxgl from 'mapbox-gl';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Booking } from '../../interfaces/booking';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 (mapboxgl as any).accessToken = 'pk.eyJ1IjoieWFzaW5tdW5veiIsImEiOiJjbDlkNjF4ZW8wMWpjM3ZwYmF0bmJsdGNzIn0.K0bcPYP7QBi9mJyD_ByQUg';
 
@@ -19,35 +20,54 @@ export class ShowSpaceComponent implements OnInit {
   space: any;
   bookingDates: Date[] = [];
   serviceFee: number = 0.02;
+  user: any;
 
   coordinates: any;
 
   amenities: any;
+
+  lifeAmenities: any [] = [];
+  workAmenities: any [] = [];
+
   images: any[] = [];
   imageUrls: string[] = []; // Array de URLs generadas para las imágenes
 
   constructor(
     private _router: Router,
     private _activatedRoute: ActivatedRoute,
+    private _jwtHelperSvc: JwtHelperService,
     private _bookingSvc: BookingService,
     private _errorSvc: ErrorService
-  ) { }
+  ) {
+    const token = localStorage.getItem("token");
+    if (token) {
+      this.user = this._jwtHelperSvc.decodeToken(token);
+    }
+  }
 
   ngOnInit(): void {
     this.id = this._activatedRoute.snapshot.paramMap.get('id');
     this.inicializate();
   }
 
-  async inicializate() {
+  async inicializate() {    
 
     this._bookingSvc.getPropertyById(this.id).subscribe({
       next: async (v) => {
         this.space = v.property;
         this.amenities = v.property.amenities;
-        console.log(this.space);
-        console.log(this.amenities);
-        this.setData();
-        console.log(this.imageUrls);
+
+        for (let i = 0; i < this.amenities.length; i++) {
+          let amenity = this.amenities[i];
+          if (amenity.type === 'life') {
+            this.lifeAmenities.push(amenity);
+          } else if (amenity.type === 'work') {
+            this.workAmenities.push(amenity);
+          }
+        }
+
+        console.log(this.space);        
+        this.setData();        
         this.setMap();
       },
       error: (e: HttpErrorResponse) => {
@@ -111,13 +131,13 @@ export class ShowSpaceComponent implements OnInit {
 
   bookSpace() {
     const booking: any = {
-      propertyId: this.space.propertyId,
+      propertyId: this.space.propertyId,      
       bookingDates: this.bookingDates,
       startDate: this.formatDate(this.bookingDates[0]),
       endDate: this.formatDate(this.bookingDates[1]),
       bookingPrice: this.getBookingPrice(),
       serviceFee: this.getServiceFee(),
-      serviceFeePrice: this.getServiceFeePrice(),      
+      serviceFeePrice: this.getServiceFeePrice(),
       totalPrice: this.getBookingTotalPrice(),
       status: 'Pending'
     };
@@ -157,7 +177,7 @@ export class ShowSpaceComponent implements OnInit {
   }
 
   getBookingPrice() {
-    return this.getBookingDays() * this.space.price;    
+    return this.getBookingDays() * this.space.price;
   }
 
   getServiceFee() {

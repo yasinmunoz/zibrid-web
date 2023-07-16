@@ -22,6 +22,10 @@ export class MySpaceComponent implements OnInit {
   coordinates: any;
 
   amenities: any;
+  
+  lifeAmenities: any [] = [];
+  workAmenities: any [] = [];
+
   images: any[] = [];
   imageUrls: string[] = []; // Array de URLs generadas para las imágenes
 
@@ -43,10 +47,20 @@ export class MySpaceComponent implements OnInit {
       next: async (v) => {
         this.mySpace = v.property;
         this.amenities = v.property.amenities;
+
+        for (let i = 0; i < this.amenities.length; i++) {
+          let amenity = this.amenities[i];
+          if (amenity.type === 'life') {
+            this.lifeAmenities.push(amenity);
+          } else if (amenity.type === 'work') {
+            this.workAmenities.push(amenity);
+          }
+        }
+
         console.log(this.mySpace);
-        console.log(this.amenities);
-        this.setData();
-        console.log(this.imageUrls); 
+        console.log(this.lifeAmenities, 'Otras comodidades');
+        console.log(this.workAmenities, 'Comodidades para el teletrabajo');
+        this.setData();        
         this.setMap();
       },
       error: (e: HttpErrorResponse) => {

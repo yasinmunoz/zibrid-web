@@ -61,10 +61,10 @@
         *ngIf="this.mySpace?.status == 'Verified'">
         Editar espacio
       </button>
-      <button type="button" class="btn btn-danger mt-3" (click)="deleteSpace(this.mySpace?.propertyId)"
+      <!-- <button type="button" class="btn btn-danger mt-3" (click)="deleteSpace(this.mySpace?.propertyId)"
         *ngIf="this.mySpace?.status == 'Verified'">
         Borrar espacio
-      </button>
+      </button> -->
     </div>
   </div>
 
@@ -95,7 +95,7 @@
   <h5 class="mt-4 mb-3">COMODIDADES PARA EL TELETRABAJO</h5>
   <div class="row">
 
-    <div class="col-md-3" *ngFor="let amenity of amenities">
+    <div class="col-md-3" *ngFor="let amenity of workAmenities">
       <div class="card h-100 text-center">
         <div class="card-body">
           <div class="text-primary mb-3 mx-auto">
@@ -111,24 +111,13 @@
   <h5 class="mt-4" *ngIf="this.mySpace?.type != 'Coworking'">RESTO DE COMODIDADES</h5>
   <div class="row" *ngIf="this.mySpace?.type != 'Coworking'">
 
-    <div class="col-md-3">
+    <div class="col-md-3" *ngFor="let amenity of lifeAmenities">
       <div class="card h-100 text-center">
         <div class="card-body">
           <div class="text-primary mb-3 mx-auto">
-            <img src="./../../../../assets/icons/kitchen.svg" width="45px">
+            <img [src]="'./../../../../assets/icons/' + amenity.name + '.svg'" width="40px">
           </div>
-          <p class="text-dark mb-0">Cocina equipada</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="card h-100 text-center">
-        <div class="card-body">
-          <div class="text-primary mb-4 mx-auto">
-            <img src="./../../../../assets/icons/parking.svg" width="45px">
-          </div>
-          <p class="text-dark mb-0">Aparcamento</p>
+          <p class="text-dark mb-0">{{ this.amenity?.description }}</p>
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@
         <div class="card h-100 border-0 shadow" *ngIf="mySpace.status == 'Pending' || mySpace.status == 'Verified'">
           <div class="card-img-top">
             <a (click)="goToMySpace(mySpace)">
-              <img class="img-fluid pointer" [src]="mySpace.imageBlobURL" alt="Apartment Image" />
+              <img class="img-fluid pointer fixed-size-image" [src]="mySpace.imageBlobURL" alt="Apartment Image" />
             </a>
           </div>
           <div class="card-body">
