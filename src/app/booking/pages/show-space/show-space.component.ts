@@ -84,9 +84,9 @@ export class ShowSpaceComponent implements OnInit {
     const country = this.space.country;
     const zip = this.space.zip;
 
-    console.log(address, city, province, state, country, zip);
+    console.log(address, zip + city, province, country);
 
-    this._bookingSvc.searchWord(`${address}, ${city}, ${province}, ${state}, ${country}, ${zip}`).subscribe({
+    this._bookingSvc.searchWord(`${address}, ${zip} ${city}, ${province}, ${country}`).subscribe({
       next: async (v) => {
         this.coordinates = v[0].center;
 

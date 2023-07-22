@@ -85,9 +85,9 @@ export class ShowSpacesComponent {
     this.currentTab = tab;
 
     this._bookingSvc.getApartmentsByLocation(this.location).subscribe({
-      next: async (v) => {
-        this.properties = v.data;
-        console.log(this.properties);
+      next: async (v) => {        
+        this.properties = v.data.filter((property: { status: string; }) => property.status === "Verified");
+        console.log(this.properties, 'apartments');
         this.setData();
       },
       error: (e: HttpErrorResponse) => {
@@ -101,8 +101,8 @@ export class ShowSpacesComponent {
 
     this._bookingSvc.getHousesByLocation(this.location).subscribe({
       next: async (v) => {
-        this.properties = v.data;
-        console.log(this.properties);
+        this.properties = v.data.filter((property: { status: string; }) => property.status === "Verified");
+        console.log(this.properties, 'houses');
         this.setData();
       },
       error: (e: HttpErrorResponse) => {
@@ -116,8 +116,8 @@ export class ShowSpacesComponent {
 
     this._bookingSvc.getCoworkingsByLocation(this.location).subscribe({
       next: async (v) => {
-        this.properties = v.data;
-        console.log(this.properties);
+        this.properties = v.data.filter((property: { status: string; }) => property.status === "Verified");
+        console.log(this.properties, 'coworkings');
         this.setData();
       },
       error: (e: HttpErrorResponse) => {
@@ -131,8 +131,8 @@ export class ShowSpacesComponent {
     
     this._bookingSvc.getColivingsByLocation(this.location).subscribe({
       next: async (v) => {
-        this.properties = v.data;
-        console.log(this.properties);
+        this.properties = v.data.filter((property: { status: string; }) => property.status === "Verified");
+        console.log(this.properties, 'colivings');
         this.setData();
       },
       error: (e: HttpErrorResponse) => {

@@ -77,10 +77,10 @@ export class MySpaceComponent implements OnInit {
     const state = this.mySpace.state;
     const country = this.mySpace.country;
     const zip = this.mySpace.zip;
+    
+    console.log(address, zip + city, province, country);
 
-    console.log(address, city, province, state, country, zip);
-
-    this._accountSvc.searchWord(`${address}, ${city}, ${province}, ${state}, ${country}, ${zip}`).subscribe({
+    this._accountSvc.searchWord(`${address}, ${zip} ${city}, ${province}, ${country}`).subscribe({
       next: async (v) => {
         this.coordinates = v[0].center;
         console.log(v)

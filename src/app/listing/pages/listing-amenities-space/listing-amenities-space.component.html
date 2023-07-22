@@ -16,7 +16,7 @@
           <label class="form-check-label">{{ amenity.description }}</label>        
       </div>
     </div>
-    <div class="col-sm-6 col-12 ">
+    <div class="col-sm-6 col-12" *ngIf="mySpace?.type != 'Coworking'">
       <h3>Resto de comodidades</h3>
       <div class="form-check" *ngFor="let amenity of lifeAmenities">        
           <input class="form-check-input" type="checkbox" [id]="amenity.name" [checked]="amenitiesPropertyNames.includes(amenity.name)" (change)="toggleAmenitySelection(amenity, $event)">
