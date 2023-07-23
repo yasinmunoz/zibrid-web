@@ -59,11 +59,11 @@ export class ListingPriceImagesSpaceComponent implements OnInit {
   }
 
   increasePrice(): void {
-    this.mySpace.price += 1;
+    this.mySpace.price = parseInt(this.mySpace.price) + 1;
   }
-
+  
   decreasePrice(): void {
-    this.mySpace.price -= 1;
+    this.mySpace.price = parseInt(this.mySpace.price) - 1;
     if (this.mySpace.price < 0) this.mySpace.price = 0;
   }
 
